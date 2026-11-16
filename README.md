@@ -1,5 +1,7 @@
 # Explainability is Encodability
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24286643.svg)](https://doi.org/10.5281/zenodo.24286643)
+
 **A sheaf-theoretic foundation for neural network interpretability, formalized in Lean 4.**
 
 > 可解释性 = 可编码性：神经网络可解释性的层论基础
