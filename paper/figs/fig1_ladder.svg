@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="380" viewBox="0 0 780 380" font-family="Microsoft YaHei, SimHei, sans-serif">
+<rect width="780" height="380" fill="white"/>
+<defs>
+<marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L0,6.4 L7.5,3.2 z" fill="#2b6cb0"/></marker>
+<marker id="arrR" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L0,6.4 L7.5,3.2 z" fill="#e53e3e"/></marker>
+<marker id="arrG" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L0,6.4 L7.5,3.2 z" fill="#718096"/></marker>
+</defs>
+<text x="390.0" y="34" font-size="20" fill="#1a202c" text-anchor="middle" font-weight="bold" font-style="normal" dominant-baseline="middle">观察层塔：δ 严格递减的有限链</text>
+<line x1="132" y1="150" x2="228" y2="150" stroke="#2b6cb0" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="272" y1="150" x2="368" y2="150" stroke="#2b6cb0" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="412" y1="150" x2="508" y2="150" stroke="#2b6cb0" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="552" y1="150" x2="648" y2="150" stroke="#2b6cb0" stroke-width="2" marker-end="url(#arr)"/>
+<circle cx="110" cy="150" r="21" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2.2"/>
+<text x="110" y="151" font-size="16" fill="#1a365d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">δ₀</text>
+<circle cx="250" cy="150" r="21" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2.2"/>
+<text x="250" y="151" font-size="16" fill="#1a365d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">δ₁</text>
+<circle cx="390" cy="150" r="21" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2.2"/>
+<text x="390" y="151" font-size="16" fill="#1a365d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">δ₂</text>
+<circle cx="530" cy="150" r="21" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2.2"/>
+<text x="530" y="151" font-size="16" fill="#1a365d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">δ₃</text>
+<circle cx="670" cy="150" r="21" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2.2"/>
+<text x="670" y="151" font-size="16" fill="#1a365d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">δ₄</text>
+<text x="96" y="92" font-size="13" fill="#dd6b20" text-anchor="start" font-weight="normal" font-style="normal" dominant-baseline="middle">粗（δ 大）</text>
+<text x="684" y="92" font-size="13" fill="#dd6b20" text-anchor="end" font-weight="normal" font-style="normal" dominant-baseline="middle">细（δ 小）</text>
+<path d="M 118 186 Q 390 270 662 186" fill="none" stroke="#718096" stroke-width="1.6" stroke-dasharray="6,5" marker-end="url(#arrG)"/>
+<text x="390" y="254" font-size="13" fill="#718096" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">resolution：δ₀ → δ₄（合成）</text>
+<rect x="135.0" y="318" width="510" height="42" rx="9" fill="#ebf8ff" stroke="#90cdf4"/>
+<text x="390.0" y="339" font-size="13" fill="#2d3748" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">每个方块交换（resolution_comp）：三条路径合成相同</text>
+</svg>

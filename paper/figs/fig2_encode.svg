@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="380" viewBox="0 0 780 380" font-family="Microsoft YaHei, SimHei, sans-serif">
+<rect width="780" height="380" fill="white"/>
+<defs>
+<marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L0,6.4 L7.5,3.2 z" fill="#2b6cb0"/></marker>
+<marker id="arrR" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L0,6.4 L7.5,3.2 z" fill="#e53e3e"/></marker>
+<marker id="arrG" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L0,6.4 L7.5,3.2 z" fill="#718096"/></marker>
+</defs>
+<text x="390.0" y="34" font-size="20" fill="#1a202c" text-anchor="middle" font-weight="bold" font-style="normal" dominant-baseline="middle">可解释 ⟺ 可编码：互逆的一对映射</text>
+<rect x="90" y="130" width="200" height="110" rx="12" fill="#fffaf0" stroke="#dd6b20" stroke-width="2.2"/>
+<text x="190" y="168" font-size="15" fill="#7b341e" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">单层对象</text>
+<text x="190" y="200" font-size="12.5" fill="#7b341e" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">ResLayer.object ⟨δmax⟩</text>
+<rect x="490" y="108" width="200" height="26" rx="5" fill="#f0fff4" stroke="#38a169" stroke-width="1.6"/>
+<text x="590" y="122" font-size="12" fill="#22543d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">δ₀ 层</text>
+<rect x="490" y="140" width="200" height="26" rx="5" fill="#f0fff4" stroke="#38a169" stroke-width="1.6"/>
+<text x="590" y="154" font-size="12" fill="#22543d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">δ₁ 层</text>
+<rect x="490" y="172" width="200" height="26" rx="5" fill="#f0fff4" stroke="#38a169" stroke-width="1.6"/>
+<text x="590" y="186" font-size="12" fill="#22543d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">δ₂ 层</text>
+<rect x="490" y="204" width="200" height="26" rx="5" fill="#f0fff4" stroke="#38a169" stroke-width="1.6"/>
+<text x="590" y="218" font-size="12" fill="#22543d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">δ₃ 层</text>
+<rect x="490" y="236" width="200" height="26" rx="5" fill="#f0fff4" stroke="#38a169" stroke-width="1.6"/>
+<text x="590" y="250" font-size="12" fill="#22543d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">δ₄ 层</text>
+<text x="590" y="88" font-size="14" fill="#22543d" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">层族（NetState）</text>
+<line x1="300" y1="165" x2="482" y2="165" stroke="#2b6cb0" stroke-width="2.4" marker-end="url(#arr)"/>
+<text x="391" y="148" font-size="15" fill="#2b6cb0" text-anchor="middle" font-weight="bold" font-style="normal" dominant-baseline="middle">encode</text>
+<line x1="482" y1="205" x2="300" y2="205" stroke="#e53e3e" stroke-width="2.4" marker-end="url(#arrR)"/>
+<text x="391" y="224" font-size="15" fill="#e53e3e" text-anchor="middle" font-weight="bold" font-style="normal" dominant-baseline="middle">decode</text>
+<rect x="150" y="290" width="480" height="66" rx="10" fill="#f7fafc" stroke="#cbd5e0"/>
+<text x="390" y="311" font-size="14" fill="#2f855a" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">decode ∘ encode = id    （总成立）</text>
+<text x="390" y="337" font-size="14" fill="#c53030" text-anchor="middle" font-weight="normal" font-style="normal" dominant-baseline="middle">encode ∘ decode = id    （仅当相干）</text>
+</svg>
