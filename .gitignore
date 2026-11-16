@@ -1,0 +1,16 @@
+# Lean
+.lake/
+*.olean
+*.ilean
+*.trace
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# OS
+.DS_Store
+Thumbs.db
