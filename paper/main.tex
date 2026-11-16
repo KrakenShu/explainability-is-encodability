@@ -34,6 +34,27 @@
   xrightmargin=0.4em,
   aboveskip=0.7em,
   belowskip=0.7em,
+  extendedchars=true,
+  literate=
+    {ℚ}{{$\mathbb{Q}$}}1 {ℤ}{{$\mathbb{Z}$}}1 {ℕ}{{$\mathbb{N}$}}1 {ℝ}{{$\mathbb{R}$}}1
+    {α}{{$\alpha$}}1 {β}{{$\beta$}}1 {γ}{{$\gamma$}}1 {δ}{{$\delta$}}1
+    {ε}{{$\varepsilon$}}1 {η}{{$\eta$}}1 {θ}{{$\theta$}}1 {λ}{{$\lambda$}}1
+    {μ}{{$\mu$}}1 {π}{{$\pi$}}1 {ρ}{{$\rho$}}1 {σ}{{$\sigma$}}1
+    {τ}{{$\tau$}}1 {φ}{{$\varphi$}}1 {ψ}{{$\psi$}}1 {ω}{{$\omega$}}1
+    {Δ}{{$\Delta$}}1 {Σ}{{$\Sigma$}}1 {Ω}{{$\Omega$}}1
+    {∘}{{$\circ$}}1 {∈}{{$\in$}}1 {∉}{{$\notin$}}1 {≤}{{$\le$}}1 {≥}{{$\ge$}}1
+    {≠}{{$\ne$}}1 {≈}{{$\approx$}}1 {≡}{{$\equiv$}}1 {≃}{{$\simeq$}}1
+    {⊂}{{$\subset$}}1 {⊆}{{$\subseteq$}}1 {∪}{{$\cup$}}1 {∩}{{$\cap$}}1
+    {→}{{$\to$}}1 {←}{{$\leftarrow$}}1 {↔}{{$\leftrightarrow$}}1 {↦}{{$\mapsto$}}1
+    {⟺}{{$\Longleftrightarrow$}}1 {⟹}{{$\Longrightarrow$}}1
+    {⟸}{{$\Longleftarrow$}}1 {⟶}{{$\longrightarrow$}}1 {↓}{{$\downarrow$}}1
+    {∀}{{$\forall$}}1 {∃}{{$\exists$}}1 {¬}{{$\neg$}}1 {∧}{{$\wedge$}}1 {∨}{{$\vee$}}1
+    {∑}{{$\sum$}}1 {∏}{{$\prod$}}1 {∞}{{$\infty$}}1 {√}{{$\sqrt{\ }$}}1
+    {⌊}{{$\lfloor$}}1 {⌋}{{$\rfloor$}}1 {⟨}{{$\langle$}}1 {⟩}{{$\rangle$}}1
+    {‖}{{$\|$}}1 {…}{{$\ldots$}}1
+    {₀}{{$_0$}}1 {₁}{{$_1$}}1 {₂}{{$_2$}}1 {₃}{{$_3$}}1 {₄}{{$_4$}}1
+    {ᵢ}{{$_i$}}1 {ⱼ}{{$_j$}}1 {ⁿ}{{$^n$}}1 {²}{{$^2$}}1 {³}{{$^3$}}1 {¹}{{$^1$}}1
+    {×}{{$\times$}}1 {·}{{$\cdot$}}1 {∎}{{$\blacksquare$}}1,
 }
 
 \title{可解释性 = 可编码性\\[0.3em]\large 神经网络可解释性的层论基础}
@@ -52,11 +73,11 @@
 
 \textbf{可解释 \ensuremath{\Longleftrightarrow} 可编码。} 相干网络态与单层对象之间存在一对互逆映射，编码是单射。于是"黑箱"有了一个肯定式定义：\textbf{不存在能生成它的源}——不是我们看不懂它，是它没有代码。
 
-第二，这个判据的\textbf{代价是可算的}。对 ReLU 族，坍缩跨度有精确闭式 \texttt{gap = (c/a + 1)²}，标准 ReLU 的 gap 恰为 1（不是 0）；多层复合服从一条非加非乘的律 \texttt{√gap(g∘f) = √gap(f) + (√gap(g)−1)/a\ensuremath{_{1}}}。由此得到容量的精确边界：在盒 \texttt{[−B,B]} 上，可分辨点数 \texttt{max N = ⌊2B/√g⌋ + 1}，且等距网格达到它。
+第二，这个判据的\textbf{代价是可算的}。对 ReLU 族，坍缩跨度有精确闭式 \texttt{gap = (c/a + 1)²}，标准 ReLU 的 gap 恰为 1（不是 0）；多层复合服从一条非加非乘的律 \texttt{\ensuremath{\sqrt{\mathrm{gap}}}(g\ensuremath{\circ}f) = \ensuremath{\sqrt{\mathrm{gap}}}(f) + (\ensuremath{\sqrt{\mathrm{gap}}}(g)\ensuremath{-}1)/\ensuremath{a_{1}}}。由此得到容量的精确边界：在盒 \texttt{[\ensuremath{-}B,B]} 上，可分辨点数 \texttt{max N = \ensuremath{\lfloor}2B/\ensuremath{\sqrt{\mathrm{g}}}\ensuremath{\rfloor} + 1}，且等距网格达到它。
 
 第三，一个反直觉的推论：\textbf{可解释性与泛化不是同向的}。gap 同时是容量的倒数，所以 gap 越大泛化越容易、越不可解释。\textbf{黑箱不是缺陷，是泛化的来源}——它不能修复（信息已丢），也不该修复（修好了就没有泛化）。
 
-第四，我们对近期用层论做可解释性的外部方案给出划界：同一个 \texttt{b\ensuremath{_{1}}} 公式，建在\textbf{观察层塔}上恒为零（方格全部交换），建在\textbf{计算网格}上才计数扩张层。\textbf{\texttt{b\ensuremath{_{1}}} 是 site 的函数，不是网络的属性。}
+第四，我们对近期用层论做可解释性的外部方案给出划界：同一个 \texttt{\ensuremath{b_{1}}} 公式，建在\textbf{观察层塔}上恒为零（方格全部交换），建在\textbf{计算网格}上才计数扩张层。\textbf{\texttt{\ensuremath{b_{1}}} 是 site 的函数，不是网络的属性。}
 
 全部结论在 Lean 4 + Mathlib 中机械检验：零 \texttt{sorry}，不使用经典逻辑，全程有理数。这不是工程附注，是内容的一部分（§1.5）。
 
@@ -72,11 +93,11 @@ We model a network as a \textbf{layer-wise family of maps}, with the layer ladde
 
 \textbf{Interpretable \ensuremath{\Longleftrightarrow} encodable.} Coherent network states and single-layer objects are related by a pair of mutually inverse maps, and the encoding is injective. "Black box" thereby acquires a positive definition: \textbf{there exists no source that generates it} — not that we fail to understand it, but that it has no code.
 
-Second, the \textbf{cost of this criterion is computable}. For the ReLU family the collapse span has a closed form \texttt{gap = (c/a + 1)²}; for the standard ReLU the gap is exactly 1 (not 0). Composition follows a law that is neither additive nor multiplicative: \texttt{√gap(g∘f) = √gap(f) + (√gap(g)−1)/a\ensuremath{_{1}}}. This yields an exact capacity bound: in the box \texttt{[−B,B]} the number of distinguishable points satisfies \texttt{max N = ⌊2B/√g⌋ + 1}, attained by the uniform grid.
+Second, the \textbf{cost of this criterion is computable}. For the ReLU family the collapse span has a closed form \texttt{gap = (c/a + 1)²}; for the standard ReLU the gap is exactly 1 (not 0). Composition follows a law that is neither additive nor multiplicative: \texttt{\ensuremath{\sqrt{\mathrm{gap}}}(g\ensuremath{\circ}f) = \ensuremath{\sqrt{\mathrm{gap}}}(f) + (\ensuremath{\sqrt{\mathrm{gap}}}(g)\ensuremath{-}1)/\ensuremath{a_{1}}}. This yields an exact capacity bound: in the box \texttt{[\ensuremath{-}B,B]} the number of distinguishable points satisfies \texttt{max N = \ensuremath{\lfloor}2B/\ensuremath{\sqrt{\mathrm{g}}}\ensuremath{\rfloor} + 1}, attained by the uniform grid.
 
 Third, a counterintuitive corollary: \textbf{interpretability and generalization do not point the same way}. The gap is also the reciprocal of capacity, so a larger gap means easier generalization and poorer interpretability. \textbf{The black box is not a defect but the source of generalization} — it cannot be repaired (the information is already lost), and should not be (repairing it destroys generalization).
 
-Fourth, we delineate the scope of recent work that applies sheaf theory to interpretability: the same \texttt{b\ensuremath{_{1}}} formula is identically zero on the \textbf{observation ladder} (every square commutes), and only counts expanding layers on the \textbf{computation grid}. \textbf{\texttt{b\ensuremath{_{1}}} is a function of the site, not a property of the network.}
+Fourth, we delineate the scope of recent work that applies sheaf theory to interpretability: the same \texttt{\ensuremath{b_{1}}} formula is identically zero on the \textbf{observation ladder} (every square commutes), and only counts expanding layers on the \textbf{computation grid}. \textbf{\texttt{\ensuremath{b_{1}}} is a function of the site, not a property of the network.}
 
 All results are machine-checked in Lean 4 + Mathlib: zero \texttt{sorry}, no classical logic, entirely over the rationals. This is not an engineering footnote but part of the content (§1.5).
 
@@ -177,9 +198,9 @@ c/a & gap & 含义 \\
 √gap(g∘f) = √gap(f) + (√gap(g) − 1) / a₁
 \end{lstlisting}
 
-单位权重时最干净：\texttt{√gap(g∘f) = √gap(f) + √gap(g) − 1}。那个 \texttt{−1} 就是标准 ReLU 那个 \texttt{1} 的减法形式。
+单位权重时最干净：\texttt{\ensuremath{\sqrt{\mathrm{gap}}}(g\ensuremath{\circ}f) = \ensuremath{\sqrt{\mathrm{gap}}}(f) + \ensuremath{\sqrt{\mathrm{gap}}}(g) \ensuremath{-} 1}。那个 \texttt{\ensuremath{-}1} 就是标准 ReLU 那个 \texttt{1} 的减法形式。
 
-这个数还有第二面（§7）：\textbf{gap 同时是分辨率的闸门。} 在盒 \texttt{[−B,B]} 上 gap 为 \texttt{g}，能分辨的网格点数 \texttt{N < B/√g}。于是：
+这个数还有第二面（§7）：\textbf{gap 同时是分辨率的闸门。} 在盒 \texttt{[\ensuremath{-}B,B]} 上 gap 为 \texttt{g}，能分辨的网格点数 \texttt{N < B/\ensuremath{\sqrt{\mathrm{g}}}}。于是：
 
 \begin{quote}
 \textbf{gap 大 = 简单、泛化容易，同时 = 信息丢得多、不可解释。可解释性与泛化不是同向的。}
@@ -189,25 +210,25 @@ c/a & gap & 含义 \\
 
 \textbf{主张三：sheaf 诊断该建在哪里，是可以论证的（§8）。}
 
-近期工作把层论直接用于可解释性：在改述图上建 cellular sheaf，用 Laplacian 拆分内容子空间与 \texttt{H¹} 方向（Grant \& Wang, NeurIPS 2026）。他们报告 \texttt{b\ensuremath{_{1}} = N(L−1)} 个 1-循环，其 harmonic mass 与 steering fragility 强相关。
+近期工作把层论直接用于可解释性：在改述图上建 cellular sheaf，用 Laplacian 拆分内容子空间与 \texttt{\ensuremath{H^{1}}} 方向（Grant \& Wang, NeurIPS 2026）。他们报告 \texttt{\ensuremath{b_{1}} = N(L\ensuremath{-}1)} 个 1-循环，其 harmonic mass 与 steering fragility 强相关。
 
-我们问一个更窄的问题：\textbf{在我们这套形式化里，那个 \texttt{b\ensuremath{_{1}}} 是什么？}
+我们问一个更窄的问题：\textbf{在我们这套形式化里，那个 \texttt{\ensuremath{b_{1}}} 是什么？}
 
 答案是两条：
 
 \begin{enumerate}
 \item \textbf{观察层塔的第一贝蒂数恒为 0}（定理 8.1；根源是定理 4.8）：不是网络的属性，是观测方式的属性。所以\textbf{诊断不能建在那里}。
-\item \textbf{在计算网格上，方格交换 \ensuremath{\Longleftrightarrow} 层变换不放大 \ensuremath{\delta}-等价}（定义 8.2、定理 8.4），于是 \texttt{b\ensuremath{_{1}}} 计数\textbf{扩张层}。
+\item \textbf{在计算网格上，方格交换 \ensuremath{\Longleftrightarrow} 层变换不放大 \ensuremath{\delta}-等价}（定义 8.2、定理 8.4），于是 \texttt{\ensuremath{b_{1}}} 计数\textbf{扩张层}。
 \end{enumerate}
 
 \textbf{本文不复现他们的实验，也不与他们竞争。} 本文做的是划界、翻译与计算。
 
-\textbf{合起来看：} 主张一把"黑箱"从一个形容词变成一个否定式的命题（不存在代码）；主张二把"压缩得厉害"从一个比喻变成一个数；主张三把"sheaf 诊断该建在哪里"从一个品味问题变成一个可以证明的问题（同一个 \texttt{b\ensuremath{_{1}}}，建在不同 site 上，一个是恒零，一个计数扩张层）。三条都是形式化过的，不是猜想。
+\textbf{合起来看：} 主张一把"黑箱"从一个形容词变成一个否定式的命题（不存在代码）；主张二把"压缩得厉害"从一个比喻变成一个数；主张三把"sheaf 诊断该建在哪里"从一个品味问题变成一个可以证明的问题（同一个 \texttt{\ensuremath{b_{1}}}，建在不同 site 上，一个是恒零，一个计数扩张层）。三条都是形式化过的，不是猜想。
 
 \textbf{所以本文的贡献不是"又一个可解释性指标"。} 而是：
 
 \begin{quote}
-\textbf{可解释性有一个结构判据（可编码），这个判据的代价可算（gap），而且已有的 sheaf 诊断不能建在观察层塔上（\texttt{b\ensuremath{_{1}} ≡ 0}）。三者合起来，给出"可解释性 = 可编码性"的层论基础。}
+\textbf{可解释性有一个结构判据（可编码），这个判据的代价可算（gap），而且已有的 sheaf 诊断不能建在观察层塔上（\texttt{\ensuremath{b_{1}} \ensuremath{\equiv} 0}）。三者合起来，给出"可解释性 = 可编码性"的层论基础。}
 \end{quote}
 
 判据回答"是不是"，代价回答"值多少"，划界回答"该在哪里测"。\textbf{只有第一条，本文是一篇定义文章；只有前两条，是一篇度量文章；三条都有，才是一个基础。}
@@ -217,10 +238,10 @@ c/a & gap & 含义 \\
 上述框架不是一组自选定义，而是\textbf{一个公理系统的模型}。公理只有一条主干：
 
 \begin{quote}
-\textbf{A0（自指）}：存在映射 \texttt{α → (α → Bool)}。
+\textbf{A0（自指）}：存在映射 \texttt{\ensuremath{\alpha} \ensuremath{\to} (\ensuremath{\alpha} \ensuremath{\to} Bool)}。
 \end{quote}
 
-\textbf{先澄清一个用词。} A0 在技术上其实是\textbf{定义}而不是公理：每个类型 \texttt{α} 都自动带一个 \texttt{SelfRef α} 实例（取常函数即可，见附录 A.1），所以不需要"假设"它存在。我们仍然叫它"公理"，理由是\textbf{它规定了后面一切的读法}——从这条映射出发，洞是必然而不是偶然；换成别的出发点（例如只有外部观测），洞就不出现。这个称呼的选择在附录 A.1 有完整说明。
+\textbf{先澄清一个用词。} A0 在技术上其实是\textbf{定义}而不是公理：每个类型 \texttt{\ensuremath{\alpha}} 都自动带一个 \texttt{SelfRef \ensuremath{\alpha}} 实例（取常函数即可，见附录 A.1），所以不需要"假设"它存在。我们仍然叫它"公理"，理由是\textbf{它规定了后面一切的读法}——从这条映射出发，洞是必然而不是偶然；换成别的出发点（例如只有外部观测），洞就不出现。这个称呼的选择在附录 A.1 有完整说明。
 
 A0 无条件地产生一个洞——任何 \texttt{observe} 都漏掉至少一个判定（定理 2.1）。这是康托尔对角线，也是 Lawvere 不动点定理的特例，但解读不同：
 
@@ -243,7 +264,7 @@ Lawvere & 不动点 & 存在 \\
 
 \textbf{拓扑数据分析。} 用持久同调分析神经网络是成熟方向（Naitzat et al., JMLR 2020；Neural Persistence, ICLR 2019）。本文与之一致：§2.5 的三界读数在结构上是谱的层析。区别在于本文不做经验测量，而是证明读数的结构性质。
 
-\textbf{Sheaf 方法。} Grant \& Wang (2026) 把 sheaf 用于改述一致性；也有工作用 gauge 理论刻画叠加（2026）。本文与它们的区别在 §8：\textbf{我们的 site 是一条链，所以粘合公理退化为定理}（§3），代价是 \texttt{H¹ ≡ 0}。
+\textbf{Sheaf 方法。} Grant \& Wang (2026) 把 sheaf 用于改述一致性；也有工作用 gauge 理论刻画叠加（2026）。本文与它们的区别在 §8：\textbf{我们的 site 是一条链，所以粘合公理退化为定理}（§3），代价是 \texttt{\ensuremath{H^{1}} \ensuremath{\equiv} 0}。
 
 \textbf{压缩与可解释性。} "可解释 \ensuremath{\approx} 压缩"的直觉已有先例（MDL 原则；MDL-SAE, 2024）。本文的区别在于\textbf{定理形式}：不是"越小越好"的排行榜，而是"存在编码 \ensuremath{\Longleftrightarrow} 相干"的等价命题。
 
@@ -257,7 +278,7 @@ Lawvere & 不动点 & 存在 \\
 
 \begin{itemize}
 \item \textbf{符号必须能写完。} \ensuremath{\mathbb{Q}} 的每个元素是一对有限整数；\ensuremath{\mathbb{R}} 的绝大多数元素不是。§2.5 把这句话变成定理（连分数编码）。
-\item \textbf{洞必须是可数的。} §2.1 的 \texttt{entropy f = 2\textasciicircum{}\{|α|\} − |image f|} 只有在有限处才有意义。
+\item \textbf{洞必须是可数的。} §2.1 的 \texttt{entropy f = 2\textasciicircum{}\{|\ensuremath{\alpha}|\} \ensuremath{-} |image f|} 只有在有限处才有意义。
 \item \textbf{拒绝连续统是拒绝无穷可分。} 每一次除法都留残差，所以不存在无限下降的正整数链（\texttt{no\_infinite\_descent}）。
 \end{itemize}
 
@@ -294,14 +315,14 @@ Lawvere & 不动点 & 存在 \\
 
 把它写成公理：
 
-\textbf{公理 A0（自指）.} 存在一个映射 \texttt{observe : α → (α → Bool)}。
+\textbf{公理 A0（自指）.} 存在一个映射 \texttt{observe : \ensuremath{\alpha} \ensuremath{\to} (\ensuremath{\alpha} \ensuremath{\to} Bool)}。
 
 \begin{lstlisting}
 structure SelfRef (α : Type*) where
   observe : α → resolveSpace α
 \end{lstlisting}
 
-（其中 \texttt{resolveSpace α} 就是 \texttt{α → Bool}——"用 \ensuremath{\alpha} 的每个元素作一次是/否判定"。）
+（其中 \texttt{resolveSpace \ensuremath{\alpha}} 就是 \texttt{\ensuremath{\alpha} \ensuremath{\to} Bool}——"用 \ensuremath{\alpha} 的每个元素作一次是/否判定"。）
 
 \textbf{这不是要回避的东西，是起点。} 而它的后果是众所周知的：
 
@@ -316,18 +337,18 @@ theorem diagonal_hole {α : Type*} (f : α → resolveSpace α) :
     ∃ d : resolveSpace α, ∀ a : α, d ≠ f a
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 取 \texttt{d := fun a => ¬(f a a)}（康托尔对角线）。
+\textbackslash\{\}emph\{证明.\} 取 \texttt{d := fun a => \ensuremath{\neg}(f a a)}（康托尔对角线）。
 
 \textbf{这条定理没有任何假设}——不需要有限性，不需要可判定性。它是纯逻辑的。
 
-\textbf{推论 2.2（有限时洞可量化）.} 若 \texttt{α} 有限，则漏得至少一个：
+\textbf{推论 2.2（有限时洞可量化）.} 若 \texttt{\ensuremath{\alpha}} 有限，则漏得至少一个：
 
 \begin{lstlisting}
 theorem entropy_positive [Fintype α] [DecidableEq α] [Nonempty α]
     (f : α → resolveSpace α) : 0 < entropy f
 \end{lstlisting}
 
-其中 \texttt{entropy f := 2\textasciicircum{}\{|α|\} − |image f|}。
+其中 \texttt{entropy f := 2\textasciicircum{}\{|\ensuremath{\alpha}|\} \ensuremath{-} |image f|}。
 
 \textbf{要在本文里记住这两条的分工}：A0 无条件给洞；A1（有限）把洞变成可计数的。
 
@@ -357,8 +378,8 @@ inductive Phase where
 考虑两个自然的对称群：
 
 \begin{itemize}
-\item \textbf{缩放群} \texttt{ℚ\textasciicircum{}×}：把状态整体推远或拉近；
-\item \textbf{翻转群} \texttt{ℤ/2}：正负互换，中性不动。
+\item \textbf{缩放群} \texttt{\ensuremath{\mathbb{Q}}\textasciicircum{}\ensuremath{\times}}：把状态整体推远或拉近；
+\item \textbf{翻转群} \texttt{\ensuremath{\mathbb{Z}}/2}：正负互换，中性不动。
 \end{itemize}
 
 \textbf{定理 2.4（坐标唯一性，六条）.}
@@ -374,9 +395,9 @@ theorem coordinates_unique
 \midrule
 （1）完备 & 两投影联合单射 & \texttt{val\_phase\_complete} \\
 （2）必需 & 单独任一投影不够 & \texttt{val\_not\_sufficient}、\texttt{phase\_not\_sufficient} \\
-（3）对角 & \texttt{ℚ\textasciicircum{}×} 只在 \texttt{val} 非平凡；\texttt{ℤ/2} 只在 \texttt{phase} 非平凡 & \texttt{scale\_phase\_trivial}、\texttt{flip\_val\_trivial}（两条 \texttt{rfl}）+ 两个见证 \\
+（3）对角 & \texttt{\ensuremath{\mathbb{Q}}\textasciicircum{}\ensuremath{\times}} 只在 \texttt{val} 非平凡；\texttt{\ensuremath{\mathbb{Z}}/2} 只在 \texttt{phase} 非平凡 & \texttt{scale\_phase\_trivial}、\texttt{flip\_val\_trivial}（两条 \texttt{rfl}）+ 两个见证 \\
 （4）忠实 & 两个群在各自坐标上不偷懒 & \texttt{scale\_faithful}、\texttt{flip\_faithful} \\
-（5）不可再分 & \texttt{ℤ/2}-不变的函数分不开正负 & \texttt{no\_sign\_refinement} \\
+（5）不可再分 & \texttt{\ensuremath{\mathbb{Z}}/2}-不变的函数分不开正负 & \texttt{no\_sign\_refinement} \\
 （6）齐次 & 一维非零同相位态全同轨道 & \texttt{one\_dim\_one\_orbit} \\
 \bottomrule
 \end{tabular}
@@ -391,14 +412,14 @@ theorem flip_val_trivial (x : StateQuant n) : (flipState x).val = x.val := rfl
 
 \textbf{平凡性由定义直接成立}——这正是"坐标是按群作用设计的"的证据。
 
-\textbf{第（5）条最有意思}：任何 \texttt{ℤ/2}-不变的函数都无法区分正与负。
+\textbf{第（5）条最有意思}：任何 \texttt{\ensuremath{\mathbb{Z}}/2}-不变的函数都无法区分正与负。
 
 \begin{lstlisting}
 theorem no_sign_refinement {β : Type*} (f : Phase → β)
     (hf : ∀ p, f (flipPhase p) = f p) : f .positive = f .negative
 \end{lstlisting}
 
-这意味着 \texttt{\{+, −\}} 是\textbf{单个轨道}，再往下切就没有群论根据了。\textbf{"二值"之所以是二值，是因为 \texttt{ℤ/2} 只给了两个轨道。}
+这意味着 \texttt{\{+, \ensuremath{-}\}} 是\textbf{单个轨道}，再往下切就没有群论根据了。\textbf{"二值"之所以是二值，是因为 \texttt{\ensuremath{\mathbb{Z}}/2} 只给了两个轨道。}
 
 \subsection{距离}
 
@@ -416,7 +437,7 @@ theorem commonDist_one (x y : StateQuant 1) :
     commonDist x y = (x.val 0 - y.val 0) ^ 2
 \end{lstlisting}
 
-（§6 起，凡涉及一维的讨论，都直接用 \texttt{(x − y)²} 这个等价写法。）
+（§6 起，凡涉及一维的讨论，都直接用 \texttt{(x \ensuremath{-} y)²} 这个等价写法。）
 
 \textbf{它满足一条关键的齐次性：}
 
@@ -431,7 +452,7 @@ theorem scale_commonDist (c : ℚ) (x y : StateQuant n) :
     commonDist (scale c x) (scale c y) = c ^ 2 * commonDist x y
 \end{lstlisting}
 
-\textbf{这里有一个容易犯的错}（本文初稿就犯过）：以为保角性 \texttt{D(c·v) = c²·D(v)} 能确定平方和。
+\textbf{这里有一个容易犯的错}（本文初稿就犯过）：以为保角性 \texttt{D(c\ensuremath{\cdot}v) = \ensuremath{c^{2}}\ensuremath{\cdot}D(v)} 能确定平方和。
 
 \textbf{不能。} 任何二次型都是 2 次齐次的，所以保角性对\textbf{所有}二次型成立——它筛不掉任何东西。
 
@@ -471,22 +492,22 @@ theorem quadForm_is_squared_norm {n : ℕ} (M : Fin n → Fin n → ℚ) (hn : 0
 
 \textbackslash\{\}emph\{证明.\} 分三步，\textbf{维度在这里不起作用}。
 
-\textbf{第一步（可加 \ensuremath{\Longrightarrow} 交叉项相消）.} 取 \texttt{v = e\ensuremath{_{i}}·1}、\texttt{w = e\ensuremath{_{j}}·1}（\texttt{i ≠ j}，支撑不交）：
+\textbf{第一步（可加 \ensuremath{\Longrightarrow} 交叉项相消）.} 取 \texttt{v = \ensuremath{e_{i}}\ensuremath{\cdot}1}、\texttt{w = \ensuremath{e_{j}}\ensuremath{\cdot}1}（\texttt{i \ensuremath{\ne} j}，支撑不交）：
 
 \begin{lstlisting}
 D(eᵢ + eⱼ) = Mᵢᵢ + Mᵢⱼ + Mⱼᵢ + Mⱼⱼ
 D(eᵢ) + D(eⱼ) = Mᵢᵢ + Mⱼⱼ
 \end{lstlisting}
 
-相减得 \texttt{M\ensuremath{_{ij}} + M\ensuremath{_{ji}} = 0}（\texttt{quadForm\_offdiag}）。
+相减得 \texttt{\ensuremath{M_{ij}} + \ensuremath{M_{ji}} = 0}（\texttt{quadForm\_offdiag}）。
 
-\textbf{第二步（置换不变 \ensuremath{\Longrightarrow} 对角元相等）.} 交换坐标 \texttt{i, j} 把 \texttt{e\ensuremath{_{i}}} 送成 \texttt{e\ensuremath{_{j}}}（\texttt{basisVec\_comp\_swap}），于是 \texttt{D(e\ensuremath{_{j}}) = D(e\ensuremath{_{i}})}，即 \texttt{M\ensuremath{_{jj}} = M\ensuremath{_{ii}}}。
+\textbf{第二步（置换不变 \ensuremath{\Longrightarrow} 对角元相等）.} 交换坐标 \texttt{i, j} 把 \texttt{\ensuremath{e_{i}}} 送成 \texttt{\ensuremath{e_{j}}}（\texttt{basisVec\_comp\_swap}），于是 \texttt{D(\ensuremath{e_{j}}) = D(\ensuremath{e_{i}})}，即 \texttt{\ensuremath{M_{jj}} = \ensuremath{M_{ii}}}。
 
-\textbf{第三步（反对称部分归零）.} 设 \texttt{α = M\ensuremath{_{00}}}，令 \texttt{A\ensuremath{_{ij}} = M\ensuremath{_{ij}} − α·δ\ensuremath{_{ij}}}。则
+\textbf{第三步（反对称部分归零）.} 设 \texttt{\ensuremath{\alpha} = \ensuremath{M_{00}}}，令 \texttt{\ensuremath{A_{ij}} = \ensuremath{M_{ij}} \ensuremath{-} \ensuremath{\alpha}\ensuremath{\cdot}\ensuremath{\\delta_{ij}}}。则
 
 \begin{itemize}
-\item \texttt{i ≠ j} 时 \texttt{A\ensuremath{_{ij}} = M\ensuremath{_{ij}} = −M\ensuremath{_{ji}} = −A\ensuremath{_{ji}}}；
-\item \texttt{i = j} 时 \texttt{A\ensuremath{_{ii}} = M\ensuremath{_{ii}} − α = 0 = −A\ensuremath{_{ii}}}。
+\item \texttt{i \ensuremath{\ne} j} 时 \texttt{\ensuremath{A_{ij}} = \ensuremath{M_{ij}} = \ensuremath{-}\ensuremath{M_{ji}} = \ensuremath{-}\ensuremath{A_{ji}}}；
+\item \texttt{i = j} 时 \texttt{\ensuremath{A_{ii}} = \ensuremath{M_{ii}} \ensuremath{-} \ensuremath{\alpha} = 0 = \ensuremath{-}\ensuremath{A_{ii}}}。
 \end{itemize}
 
 所以 \texttt{A} 反对称。而\textbf{反对称矩阵的二次型恒为零}（\texttt{antisym\_sum\_zero}）：
@@ -495,11 +516,11 @@ D(eᵢ) + D(eⱼ) = Mᵢᵢ + Mⱼⱼ
 Σᵢ Σⱼ Aᵢⱼ uᵢ uⱼ = 0
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明：交换求和顺序再换名，得 \texttt{S = −S}。\}
+\textbackslash\{\}emph\{证明：交换求和顺序再换名，得 \texttt{S = \ensuremath{-}S}。\}
 
-于是 \texttt{D(v) = α Σ v\ensuremath{_{i}}² + 0}（\texttt{quadForm\_diagonal\_const} 处理对角部分）。\ensuremath{\ensuremath{\blacksquare}}
+于是 \texttt{D(v) = \ensuremath{\alpha} \ensuremath{\Sigma} \ensuremath{v_{i}}² + 0}（\texttt{quadForm\_diagonal\_const} 处理对角部分）。\ensuremath{\ensuremath{\blacksquare}}
 
-\textbf{注意：三维及以上与二维的证明完全一样}——第一步取任意 \texttt{i ≠ j}，第二步交换任意两个坐标。\textbf{唯一用到维数的是 \texttt{n > 0}（否则没有 \ensuremath{\alpha} 可取）。}
+\textbf{注意：三维及以上与二维的证明完全一样}——第一步取任意 \texttt{i \ensuremath{\ne} j}，第二步交换任意两个坐标。\textbf{唯一用到维数的是 \texttt{n > 0}（否则没有 \ensuremath{\alpha} 可取）。}
 
 \textbf{而保角性反过来是推论：}
 
@@ -518,18 +539,18 @@ theorem squared_norm_conformal (α c : ℚ) (v : Fin 2 → ℚ) :
 
 \textbf{这一节的意义不在于"我们选了平方距离"，而在于"平方距离是唯一被允许的距离"。}
 
-坐标置换不变 + 支撑不交可加，这两条是任何"距离"都该满足的；它们把二次型的空间压到一条线上，\texttt{D(v) = α Σ v\ensuremath{_{i}}²}，而 \texttt{α > 0} 再被标度固定。所以后面所有用 \texttt{commonDist} 写出的东西——三界读数、层塔、编码、gap——都\textbf{不是在一堆可能的度量里挑了一个顺手的}，是在对称为唯一允许的那一个里读出来的。
+坐标置换不变 + 支撑不交可加，这两条是任何"距离"都该满足的；它们把二次型的空间压到一条线上，\texttt{D(v) = \ensuremath{\alpha} \ensuremath{\Sigma} \ensuremath{v_{i}}²}，而 \texttt{\ensuremath{\alpha} > 0} 再被标度固定。所以后面所有用 \texttt{commonDist} 写出的东西——三界读数、层塔、编码、gap——都\textbf{不是在一堆可能的度量里挑了一个顺手的}，是在对称为唯一允许的那一个里读出来的。
 
 \textbf{这对 §6 直接有用：} §6 的 gap 就是 \texttt{commonDist} 下的一个上限。所以 gap 不是"我们选了一个度量得到的数"，而是"被对称性逼出来的唯一的数"——换个度量，gap 这个说法本身就不成立。
 
 \subsection{三界读数}
 
-给定一对状态和一个阈值 \texttt{δ}，每个维度落入三界之一：
+给定一对状态和一个阈值 \texttt{\ensuremath{\delta}}，每个维度落入三界之一：
 
 \begin{itemize}
-\item \textbf{死界}：差异 \texttt{< δ}（清）
-\item \textbf{暹界}：差异 \texttt{= δ}（临界）
-\item \textbf{生界}：差异 \texttt{> δ}（浊）
+\item \textbf{死界}：差异 \texttt{< \ensuremath{\delta}}（清）
+\item \textbf{暹界}：差异 \texttt{= \ensuremath{\delta}}（临界）
+\item \textbf{生界}：差异 \texttt{> \ensuremath{\delta}}（浊）
 \end{itemize}
 
 \textbf{定理 2.8（观测律）.}
@@ -562,7 +583,7 @@ structure LayerLadder where
 \includegraphics[width=0.92\textwidth]{figs/fig1_ladder.png}
 \end{center}
 
-\textbf{图 1.} 观察层塔的结构。节点是层（不同的分辨率 \texttt{δ\ensuremath{_{i}}}），箭头是消解（分辨率重采样）。虚线表示可复合的长程消解 \texttt{δ\ensuremath{_{0}} → δ\ensuremath{_{4}}}。底部的方框是本文能在层塔上证明的唯一结构性事实：\textbf{每个方块都交换}——这正是 §8 中 \texttt{b\ensuremath{_{1}} ≡ 0} 的来源。
+\textbf{图 1.} 观察层塔的结构。节点是层（不同的分辨率 \texttt{\ensuremath{\\delta_{i}}}），箭头是消解（分辨率重采样）。虚线表示可复合的长程消解 \texttt{\ensuremath{\\delta_{0}} \ensuremath{\to} \ensuremath{\\delta_{4}}}。底部的方框是本文能在层塔上证明的唯一结构性事实：\textbf{每个方块都交换}——这正是 §8 中 \texttt{\ensuremath{b_{1}} \ensuremath{\equiv} 0} 的来源。
 
 \textbf{为什么是有限链？}
 
@@ -570,18 +591,18 @@ structure LayerLadder where
 
 \begin{enumerate}
 \item \textbf{A1（有限）}：§2.1 的洞需要有限性才能计数；
-\item \textbf{有序}：层的"优先级"就是 \texttt{δ} 的序（§3 详述）；
+\item \textbf{有序}：层的"优先级"就是 \texttt{\ensuremath{\delta}} 的序（§3 详述）；
 \item \textbf{一维}：多层参数会立刻跌入不可分解（见 §3 的讨论）。
 \end{enumerate}
 
-\textbf{定义 2.10（凝结）.} 在层 \texttt{δ} 下，两个状态"同层"如果它们的差异不超过 \texttt{δ}：
+\textbf{定义 2.10（凝结）.} 在层 \texttt{\ensuremath{\delta}} 下，两个状态"同层"如果它们的差异不超过 \texttt{\ensuremath{\delta}}：
 
 \begin{lstlisting}
 def ResLayer.indistinguishable (L : ResLayer) (x y : StateQuant n) : Prop :=
   commonDist x y ≤ L.δ
 \end{lstlisting}
 
-\textbf{但"不可区分"不传递}——\texttt{D(x,y) ≤ δ} 且 \texttt{D(y,z) ≤ δ} 不蕴含 \texttt{D(x,z) ≤ δ}。
+\textbf{但"不可区分"不传递}——\texttt{D(x,y) \ensuremath{\le} \ensuremath{\delta}} 且 \texttt{D(y,z) \ensuremath{\le} \ensuremath{\delta}} 不蕴含 \texttt{D(x,z) \ensuremath{\le} \ensuremath{\delta}}。
 
 所以要取传递闭包：
 
@@ -608,7 +629,7 @@ abbrev ResLayer.object (L : ResLayer) (n : ℕ) := Quotient (ResLayer.condense L
 
 \subsection{消解是函子}
 
-若 \texttt{δ\ensuremath{_{1}} ≤ δ\ensuremath{_{2}}}（\texttt{δ\ensuremath{_{2}}} 更粗），则粗层的每个对象都是细层对象的像：
+若 \texttt{\ensuremath{\\delta_{1}} \ensuremath{\le} \ensuremath{\\delta_{2}}}（\texttt{\ensuremath{\\delta_{2}}} 更粗），则粗层的每个对象都是细层对象的像：
 
 \begin{lstlisting}
 def ResLayer.resolution {δ₁ δ₂ : ℚ} (h : δ₁ ≤ δ₂) :
@@ -651,7 +672,7 @@ theorem ResLayer.resolution_comp {δ₁ δ₂ δ₃ : ℚ} (h₁ : δ₁ ≤ δ�
 
 层论的威力来自一般性：site 可以是任意范畴配任意覆盖族，粘合公理于是成为一个\textbf{实质性的假设}——它要求：局部相容的数据总能唯一地拼成整体。
 
-但一般性有代价：\textbf{粘合是否成立无法判定}。给定一个 site 和一族局部截面，判断它们能否粘合，一般需要计算上同调，而 \texttt{H¹} 通常不可计算。
+但一般性有代价：\textbf{粘合是否成立无法判定}。给定一个 site 和一族局部截面，判断它们能否粘合，一般需要计算上同调，而 \texttt{\ensuremath{H^{1}}} 通常不可计算。
 
 本文的 site 极其特殊：
 
@@ -672,7 +693,7 @@ structure LayerLadder where
 
 \textbf{没有选择的余地，也就没有粘合问题。}
 
-具体地，两个层 \texttt{i ≤ j} 之间只有一条路——\texttt{resolution}：
+具体地，两个层 \texttt{i \ensuremath{\le} j} 之间只有一条路——\texttt{resolution}：
 
 \begin{lstlisting}
 def ResLayer.resolution {δ₁ δ₂ : ℚ} (h : δ₁ ≤ δ₂) :
@@ -757,9 +778,9 @@ b₁ = 1 − n² + 2n(n−1) − (n−1)² = 0
 Coherent L n (fun i => Quotient.mk ⟨δ_i⟩ (F x))
 \end{lstlisting}
 
-\textbf{所以 \texttt{H¹ = 0} 不是网络的属性，是观测方式的属性。}
+\textbf{所以 \texttt{\ensuremath{H^{1}} = 0} 不是网络的属性，是观测方式的属性。}
 
-\textbf{这是"紧"的代价}：因为 site 太紧，上同调无处着力；因此任何基于 \texttt{H¹} 的诊断在观察层塔上都是空的。
+\textbf{这是"紧"的代价}：因为 site 太紧，上同调无处着力；因此任何基于 \texttt{\ensuremath{H^{1}}} 的诊断在观察层塔上都是空的。
 
 §8 会说明：要承载诊断，必须把 sheaf 建在\textbf{计算图}上（层变换 \ensuremath{\times} 改述对），而不是观察层塔上。
 
@@ -769,7 +790,7 @@ Coherent L n (fun i => Quotient.mk ⟨δ_i⟩ (F x))
 
 \textbf{① 可计算性。}
 
-一般的 \texttt{H¹} 不可计算。而在有限链上，一切都能写成显式公式：\texttt{b\ensuremath{_{1}} = 1 − V + E − F}，其中 \texttt{F} 是填满的面数。§8 正是靠这个把 \texttt{b\ensuremath{_{1}}} 算出来的。
+一般的 \texttt{\ensuremath{H^{1}}} 不可计算。而在有限链上，一切都能写成显式公式：\texttt{\ensuremath{b_{1}} = 1 \ensuremath{-} V + E \ensuremath{-} F}，其中 \texttt{F} 是填满的面数。§8 正是靠这个把 \texttt{\ensuremath{b_{1}}} 算出来的。
 
 \textbf{② 判据的存在。}
 
@@ -792,7 +813,7 @@ Coherent L n (fun i => Quotient.mk ⟨δ_i⟩ (F x))
 \midrule
 覆盖 & 任意覆盖族 & 只有一种 \\
 粘合公理 & \textbf{假设} & \textbf{定理}（定理 3.1） \\
-\texttt{H¹} & 可能非零、不可算 & \textbf{恒为 0}，可算 \\
+\texttt{\ensuremath{H^{1}}} & 可能非零、不可算 & \textbf{恒为 0}，可算 \\
 极限 & 可能悬空 & \textbf{坍缩到末端}（定理 3.3） \\
 诊断 & 靠上同调 & 靠 \texttt{Coherent}（§4） \\
 \bottomrule
@@ -823,7 +844,7 @@ Coherent L n (fun i => Quotient.mk ⟨δ_i⟩ (F x))
 
 先说清楚一件事：
 
-\textbf{如果网络被建模成单个端到端映射} \texttt{F : StateQuant n → StateQuant n}，那么按层塔观测得到的层族
+\textbf{如果网络被建模成单个端到端映射} \texttt{F : StateQuant n \ensuremath{\to} StateQuant n}，那么按层塔观测得到的层族
 
 \begin{lstlisting}
 x  ↦  fun i => Quotient.mk ⟨δ_i⟩ (F x)
@@ -837,7 +858,7 @@ x  ↦  fun i => Quotient.mk ⟨δ_i⟩ (F x)
 
 \begin{itemize}
 \item 一个层塔 \texttt{L}（有限、一维、严格递减）；
-\item 一个\textbf{逐层映射族} \texttt{fs : Fin L.m → (StateQuant n → StateQuant n)}；
+\item 一个\textbf{逐层映射族} \texttt{fs : Fin L.m \ensuremath{\to} (StateQuant n \ensuremath{\to} StateQuant n)}；
 \item 层 \texttt{i} 的激活是 \texttt{fs i x}（对输入 \texttt{x}）。
 \end{itemize}
 
@@ -868,7 +889,7 @@ def Coherent (L : LayerLadder) (n : ℕ) (f : NetState L n) : Prop :=
 
 \subsection{主判据}
 
-记 \texttt{finest} 为最细层的索引（\texttt{δ} 最小的那层）。
+记 \texttt{finest} 为最细层的索引（\texttt{\ensuremath{\delta}} 最小的那层）。
 
 \textbf{定理 4.4（可解释 \ensuremath{\Longleftrightarrow} 由输入层决定）.}
 
@@ -887,7 +908,7 @@ theorem interpretability_criterion (L : LayerLadder) (hm : 0 < L.m) (n : ℕ) :
 \textbackslash\{\}emph\{证明.\}
 
 \begin{itemize}
-\item （\ensuremath{\Longrightarrow}）取 \texttt{g := f finest}。由相干性，\texttt{f i = resolution (i←finest) (f finest)}。
+\item （\ensuremath{\Longrightarrow}）取 \texttt{g := f finest}。由相干性，\texttt{f i = resolution (i\ensuremath{\leftarrow}finest) (f finest)}。
 \item （\ensuremath{\Longleftarrow}）若 \texttt{f = encode g} 形，则任意两条路径都等于直接消解，因为消解是函子（\texttt{resolution\_comp}）。
 \end{itemize}
 
@@ -913,13 +934,13 @@ theorem layerState_coherent_iff (L : LayerLadder)
       ∀ (i j : Fin L.m), i ≤ j → ResLayer.related ⟨L.δ i⟩ (fs j x) (fs i x)
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 把 \texttt{Coherent} 展开：\texttt{resolution (i←j) (Quotient.mk ⟨δ\_j⟩ y) = Quotient.mk ⟨δ\_i⟩ y}（由 \texttt{resolution\_condense}）。于是等式变成
+\textbackslash\{\}emph\{证明.\} 把 \texttt{Coherent} 展开：\texttt{resolution (i\ensuremath{\leftarrow}j) (Quotient.mk \ensuremath{\langle}\ensuremath{\delta}\_j\ensuremath{\rangle} y) = Quotient.mk \ensuremath{\langle}\ensuremath{\delta}\_i\ensuremath{\rangle} y}（由 \texttt{resolution\_condense}）。于是等式变成
 
 \begin{lstlisting}
 Quotient.mk ⟨δ_i⟩ (fs j x) = Quotient.mk ⟨δ_i⟩ (fs i x)
 \end{lstlisting}
 
-而这正是 \texttt{related ⟨δ\_i⟩ (fs j x) (fs i x)}（由商的相等性）。
+而这正是 \texttt{related \ensuremath{\langle}\ensuremath{\delta}\_i\ensuremath{\rangle} (fs j x) (fs i x)}（由商的相等性）。
 
 \textbf{推论 4.6（充分条件）.}
 
@@ -933,7 +954,7 @@ theorem layerState_coherent_of_close (L : LayerLadder)
     Coherent L n (layerState L fs x)
 \end{lstlisting}
 
-因为 \texttt{related} 由 \texttt{commonDist ≤ δ} 生成（单步）。
+因为 \texttt{related} 由 \texttt{commonDist \ensuremath{\le} \ensuremath{\delta}} 生成（单步）。
 
 \textbf{推论 4.6 是 §5 和 §6 的接口}：它把结构判据翻译成了距离判据，而距离正是 §6 的 gap 所使用的。
 
@@ -1004,7 +1025,7 @@ theorem relu_gap_unbounded (δ : ℚ) :
     ¬ CoherentMap δ (reluState : StateQuant 1 → StateQuant 1)
 \end{lstlisting}
 
-\textbf{定理 4.11（可解释性刻度）.} \texttt{gap} 取遍 \texttt{[0, ∞]}：恒等在 0，ReLU 在 \ensuremath{\infty}。
+\textbf{定理 4.11（可解释性刻度）.} \texttt{gap} 取遍 \texttt{[0, \ensuremath{\infty}]}：恒等在 0，ReLU 在 \ensuremath{\infty}。
 
 \begin{lstlisting}
 theorem interpretability_scale
@@ -1023,7 +1044,7 @@ theorem gap_compose_left (hf : ¬ CoherentMap δ f) :
     ¬ CoherentMap δ (fun x => g (f x))
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 若 \texttt{f} 把远处的 \texttt{x, y} 映到同一处，则 \texttt{g ∘ f} 也把这两点映到同一处。\textbf{后续层只能在已有的等价类内部操作，无法把它们重新分开。}
+\textbackslash\{\}emph\{证明.\} 若 \texttt{f} 把远处的 \texttt{x, y} 映到同一处，则 \texttt{g \ensuremath{\circ} f} 也把这两点映到同一处。\textbf{后续层只能在已有的等价类内部操作，无法把它们重新分开。}
 
 \textbf{这是本节最重要的负面结论}：黑箱的深度是单调的。一旦某个位置切断了相干性，网络之后的所有层都建立在这个切口之上。
 
@@ -1044,7 +1065,7 @@ theorem cnn_gap_persists
 \midrule
 问的是 & 整条链能否由一个源生成 & 这一层丢了多少信息 \\
 方向 & 存在源 \ensuremath{\Longrightarrow} 每层是源的像 & 相同输出 \ensuremath{\Longrightarrow} 输入近 \\
-输出 & 真 / 假 & \texttt{δ ∈ [0, ∞]} \\
+输出 & 真 / 假 & \texttt{\ensuremath{\delta} \ensuremath{\in} [0, \ensuremath{\infty}]} \\
 后续 & §5（编码） & §6（gap） \\
 \bottomrule
 \end{tabular}
@@ -1064,14 +1085,14 @@ theorem cnn_gap_persists
 
 \begin{enumerate}
 \item \textbf{结构判据}：\texttt{Coherent} \ensuremath{\Longleftrightarrow} 由输入层唯一决定（定理 4.4），且有距离刻画（定理 4.5）。
-\item \textbf{定量判据}：\texttt{CoherentMap} 给出 \texttt{gap ∈ [0,∞]}（定理 4.11），且黑箱不可修复（定理 4.12）。
+\item \textbf{定量判据}：\texttt{CoherentMap} 给出 \texttt{gap \ensuremath{\in} [0,\ensuremath{\infty}]}（定理 4.11），且黑箱不可修复（定理 4.12）。
 \end{enumerate}
 
 两者的分工（§4.8）是后面两节的分工：
 
 \begin{itemize}
 \item \textbf{§5} 把结构判据翻成编码：定理 4.4 的"存在源"变成"存在唯一、可逆的代码"。
-\item \textbf{§6} 把定量判据算出数值：定理 4.11 的 \texttt{gap ∈ [0,∞]} 在 ReLU 族上等于 \texttt{(c/a+1)²}。
+\item \textbf{§6} 把定量判据算出数值：定理 4.11 的 \texttt{gap \ensuremath{\in} [0,\ensuremath{\infty}]} 在 ReLU 族上等于 \texttt{(c/a+1)²}。
 \end{itemize}
 
 \bigskip
@@ -1133,7 +1154,7 @@ def encode (L : LayerLadder) (hm : 0 < L.m)
 decode L hm (encode L hm g) = g
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 取最细层时消解是恒等。形式化为 \texttt{resolution\_self}：对任意 \texttt{h : δ ≤ δ}，\texttt{resolution h q = q}（由恒等消解 \texttt{resolution\_refl} 与证明无关性得到）。
+\textbackslash\{\}emph\{证明.\} 取最细层时消解是恒等。形式化为 \texttt{resolution\_self}：对任意 \texttt{h : \ensuremath{\delta} \ensuremath{\le} \ensuremath{\delta}}，\texttt{resolution h q = q}（由恒等消解 \texttt{resolution\_refl} 与证明无关性得到）。
 
 \begin{lstlisting}
 theorem resolution_self {δ : ℚ} (h : δ ≤ δ) (q : ResLayer.object ⟨δ⟩ n) :
@@ -1165,7 +1186,7 @@ theorem encode_injective (L : LayerLadder) (hm : 0 < L.m) :
 \includegraphics[width=0.92\textwidth]{figs/fig2_encode.png}
 \end{center}
 
-\textbf{图 2.} 编码与解码是一对互逆映射。注意两个方向的不对称性：\texttt{decode ∘ encode = id} 对\textbf{任何}源都成立（定理 5.3），而 \texttt{encode ∘ decode = id} 只在层族相干时成立（定理 5.4）。\textbf{这个不对称正是"可解释性"的判据}——相干就是回到原点。
+\textbf{图 2.} 编码与解码是一对互逆映射。注意两个方向的不对称性：\texttt{decode \ensuremath{\circ} encode = id} 对\textbf{任何}源都成立（定理 5.3），而 \texttt{encode \ensuremath{\circ} decode = id} 只在层族相干时成立（定理 5.4）。\textbf{这个不对称正是"可解释性"的判据}——相干就是回到原点。
 
 \subsection{主定理}
 
@@ -1289,11 +1310,11 @@ Coherent L n (layerState L fs x)
 
 \subsection{为什么 ReLU 的 gap 是 \ensuremath{\infty}}
 
-§4 说 \texttt{gap ∈ [0, ∞]}：恒等映射在 0，ReLU 在 \ensuremath{\infty}。
+§4 说 \texttt{gap \ensuremath{\in} [0, \ensuremath{\infty}]}：恒等映射在 0，ReLU 在 \ensuremath{\infty}。
 
 但 ReLU 之所以是 \ensuremath{\infty}，\textbf{不是因为它坏，是因为定义域无界}。
 
-\texttt{CoherentMap δ F} 要求：只要 \texttt{F x = F y}，就有 \texttt{commonDist x y ≤ δ}。而 ReLU 把整个负半轴压成 0——取 \texttt{x = 0}、\texttt{y = −t}，无论 \texttt{t} 多大都有 \texttt{F x = F y}。于是任何有限的 \texttt{δ} 都不够。
+\texttt{CoherentMap \ensuremath{\delta} F} 要求：只要 \texttt{F x = F y}，就有 \texttt{commonDist x y \ensuremath{\le} \ensuremath{\delta}}。而 ReLU 把整个负半轴压成 0——取 \texttt{x = 0}、\texttt{y = \ensuremath{-}t}，无论 \texttt{t} 多大都有 \texttt{F x = F y}。于是任何有限的 \texttt{\ensuremath{\delta}} 都不够。
 
 \textbf{所以正确的问题不是"gap 是不是有限"，而是：}
 
@@ -1305,7 +1326,7 @@ Coherent L n (layerState L fs x)
 
 \subsection{定义}
 
-\textbf{定义 6.1（有界域上的相干）.} 设 \texttt{f : ℚ → ℚ}，\texttt{B > 0}。
+\textbf{定义 6.1（有界域上的相干）.} 设 \texttt{f : \ensuremath{\mathbb{Q}} \ensuremath{\to} \ensuremath{\mathbb{Q}}}，\texttt{B > 0}。
 
 \begin{lstlisting}
 CoherentOnBox B δ f  :=  ∀ x y,  |x| ≤ B → |y| ≤ B → f x = f y → (x − y)² ≤ δ
@@ -1327,7 +1348,7 @@ def IsGap (B : ℚ) (f : ℚ → ℚ) (g : ℚ) : Prop :=
   CoherentOnBox B g f ∧ ∀ δ : ℚ, CoherentOnBox B δ f → g ≤ δ
 \end{lstlisting}
 
-\textbf{为什么用关系而不是函数？} 因为 \ensuremath{\mathbb{Q}} 没有良序，"最小的 \texttt{δ}"不能直接写成 \texttt{sInf}。把"\texttt{g} 是 gap"写成关系，既精确又构造。
+\textbf{为什么用关系而不是函数？} 因为 \ensuremath{\mathbb{Q}} 没有良序，"最小的 \texttt{\ensuremath{\delta}}"不能直接写成 \texttt{sInf}。把"\texttt{g} 是 gap"写成关系，既精确又构造。
 
 于是"gap = \texttt{(c/a+1)²}"被精确陈述为 \texttt{IsGap 1 (reluAffine a c) ((c/a+1)²)}。
 
@@ -1339,9 +1360,9 @@ def IsGap (B : ℚ) (f : ℚ → ℚ) (g : ℚ) : Prop :=
 f(x) = max 0 (a·x − c),   x ∈ [−1, 1],   a > 0, 0 ≤ c ≤ a
 \end{lstlisting}
 
-\textbf{坍缩集}是 \texttt{\{x : a·x − c ≤ 0\} = \{x ≤ c/a\}}（因为 \texttt{a > 0}）。
+\textbf{坍缩集}是 \texttt{\{x : a\ensuremath{\cdot}x \ensuremath{-} c \ensuremath{\le} 0\} = \{x \ensuremath{\le} c/a\}}（因为 \texttt{a > 0}）。
 
-所以最远的一对被压在一起：\textbf{\texttt{x = −1} 与 \texttt{y = c/a}}。
+所以最远的一对被压在一起：\textbf{\texttt{x = \ensuremath{-}1} 与 \texttt{y = c/a}}。
 
 \begin{lstlisting}
 距离 = (c/a − (−1))² = (c/a + 1)²
@@ -1356,9 +1377,9 @@ f(x) = max 0 (a·x − c),   x ∈ [−1, 1],   a > 0, 0 ≤ c ≤ a
 \textbackslash\{\}emph\{证明.\} 分三种情形。
 
 \begin{itemize}
-\item \textbf{两者都不截断}（\texttt{a·x − c > 0} 且 \texttt{a·y − c > 0}）：此时 \texttt{f} 在该区域是线性的且严格单增（\texttt{a > 0}），故 \texttt{f x = f y} 蕴含 \texttt{x = y}，距离为 0。
-\item \textbf{两者都截断}（\texttt{a·x − c ≤ 0} 且 \texttt{a·y − c ≤ 0}）：由 \texttt{a > 0} 得 \texttt{x, y ≤ c/a}；又都在 \texttt{[−1,1]} 内，故 \texttt{x − y ∈ [−(c/a+1), c/a+1]}，平方不超过 \texttt{(c/a+1)²}。
-\item \textbf{一截断一不截断}：\textbf{这种情形不会发生。} 不妨设 \texttt{a·x − c > 0} 而 \texttt{a·y − c ≤ 0}。则 \texttt{f x = a·x − c > 0} 而 \texttt{f y = 0}，于是 \texttt{f x ≠ f y}，与假设矛盾。同理 \texttt{y} 截断 \texttt{x} 不截断时亦然。
+\item \textbf{两者都不截断}（\texttt{a\ensuremath{\cdot}x \ensuremath{-} c > 0} 且 \texttt{a\ensuremath{\cdot}y \ensuremath{-} c > 0}）：此时 \texttt{f} 在该区域是线性的且严格单增（\texttt{a > 0}），故 \texttt{f x = f y} 蕴含 \texttt{x = y}，距离为 0。
+\item \textbf{两者都截断}（\texttt{a\ensuremath{\cdot}x \ensuremath{-} c \ensuremath{\le} 0} 且 \texttt{a\ensuremath{\cdot}y \ensuremath{-} c \ensuremath{\le} 0}）：由 \texttt{a > 0} 得 \texttt{x, y \ensuremath{\le} c/a}；又都在 \texttt{[\ensuremath{-}1,1]} 内，故 \texttt{x \ensuremath{-} y \ensuremath{\in} [\ensuremath{-}(c/a+1), c/a+1]}，平方不超过 \texttt{(c/a+1)²}。
+\item \textbf{一截断一不截断}：\textbf{这种情形不会发生。} 不妨设 \texttt{a\ensuremath{\cdot}x \ensuremath{-} c > 0} 而 \texttt{a\ensuremath{\cdot}y \ensuremath{-} c \ensuremath{\le} 0}。则 \texttt{f x = a\ensuremath{\cdot}x \ensuremath{-} c > 0} 而 \texttt{f y = 0}，于是 \texttt{f x \ensuremath{\ne} f y}，与假设矛盾。同理 \texttt{y} 截断 \texttt{x} 不截断时亦然。
 \end{itemize}
 
 \textbf{定理 6.4（紧性）.} 上界被达到。
@@ -1388,7 +1409,7 @@ theorem reluAffine_isGap (ha : 0 < a) (hc0 : 0 ≤ c) (hc : c ≤ a) :
     IsGap 1 (reluAffine a c) ((c / a + 1) ^ 2)
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 拆成两部分：\texttt{CoherentOnBox}（定理 6.3）与最小性——由定理 6.4 的见证对 \texttt{x = −1, y = c/a}，任何有效 \texttt{δ} 都必须 \texttt{≥ (x−y)² = (c/a+1)²}。
+\textbackslash\{\}emph\{证明.\} 拆成两部分：\texttt{CoherentOnBox}（定理 6.3）与最小性——由定理 6.4 的见证对 \texttt{x = \ensuremath{-}1, y = c/a}，任何有效 \texttt{\ensuremath{\delta}} 都必须 \texttt{\ensuremath{\ge} (x\ensuremath{-}y)² = (c/a+1)²}。
 
 \textbf{这就是"gap 的精确值"}：一个可以写下来的数。
 
@@ -1410,7 +1431,7 @@ theorem reluAffine_isGap_full (ha : 0 < a) : IsGap 1 (reluAffine a a) 4
 
 \textbf{第一个数字最重要：标准 ReLU 的 gap = 1，不是 0。}
 
-它意味着：\textbf{任何 ReLU 层都至少损失 1 个单位的距离}——因为负半轴整段被压成 0，最远可跨 \texttt{−1} 到 \texttt{0}。
+它意味着：\textbf{任何 ReLU 层都至少损失 1 个单位的距离}——因为负半轴整段被压成 0，最远可跨 \texttt{\ensuremath{-}1} 到 \texttt{0}。
 
 这与 §4 的"ReLU 破相干"完全吻合，但现在它有了一个具体的量：\textbf{它破掉了恰好 1 个单位。}
 
@@ -1441,7 +1462,7 @@ c/a & gap & 含义 \\
 \includegraphics[width=0.92\textwidth]{figs/fig3_gap.png}
 \end{center}
 
-\textbf{图 3.} \texttt{gap} 关于 \texttt{c/a} 的闭式。两个端点就是定理 6.5 的整条内容：\texttt{c = 0} 给 1，\texttt{c = a} 给 4。\textbf{标准 ReLU 坐在 1 上，不是 0}——它一开始就付出了代价。虚线是 \ensuremath{\eta}-近似版本 \texttt{((c+η)/a + 1)²}，两条曲线的纵向间距恒为 \texttt{η/a}（定理 7.9），这就是"近似可解释的汇率"。
+\textbf{图 3.} \texttt{gap} 关于 \texttt{c/a} 的闭式。两个端点就是定理 6.5 的整条内容：\texttt{c = 0} 给 1，\texttt{c = a} 给 4。\textbf{标准 ReLU 坐在 1 上，不是 0}——它一开始就付出了代价。虚线是 \ensuremath{\eta}-近似版本 \texttt{((c+\ensuremath{\eta})/a + 1)²}，两条曲线的纵向间距恒为 \texttt{\ensuremath{\eta}/a}（定理 7.9），这就是"近似可解释的汇率"。
 
 \subsection{两层塌成一层}
 
@@ -1461,11 +1482,11 @@ theorem reluAffine2_eq_single (h2a : 0 < a₂) (h2c : 0 ≤ c₂) (x : ℚ) :
 \textbackslash\{\}emph\{证明.\} 分两种情形。
 
 \begin{itemize}
-\item 内层未被截断（\texttt{a\ensuremath{_{1}}x − c\ensuremath{_{1}} > 0}）：两边都直接代入，\texttt{a\ensuremath{_{1}}a\ensuremath{_{2}}x − (a\ensuremath{_{2}}c\ensuremath{_{1}}+c\ensuremath{_{2}}) = a\ensuremath{_{2}}(a\ensuremath{_{1}}x − c\ensuremath{_{1}}) − c\ensuremath{_{2}}}。
-\item 内层被截断（\texttt{a\ensuremath{_{1}}x − c\ensuremath{_{1}} ≤ 0}）：左边 \texttt{= max 0 (−c\ensuremath{_{2}}) = 0}；右边 \texttt{= max 0 (a\ensuremath{_{2}}(a\ensuremath{_{1}}x − c\ensuremath{_{1}}) − c\ensuremath{_{2}}) ≤ max 0 (−c\ensuremath{_{2}}) = 0}，又非负，故也是 0。
+\item 内层未被截断（\texttt{\ensuremath{a_{1}}x \ensuremath{-} \ensuremath{c_{1}} > 0}）：两边都直接代入，\texttt{\ensuremath{a_{1}}\ensuremath{a_{2}}x \ensuremath{-} (\ensuremath{a_{2}}\ensuremath{c_{1}}+\ensuremath{c_{2}}) = \ensuremath{a_{2}}(\ensuremath{a_{1}}x \ensuremath{-} \ensuremath{c_{1}}) \ensuremath{-} \ensuremath{c_{2}}}。
+\item 内层被截断（\texttt{\ensuremath{a_{1}}x \ensuremath{-} \ensuremath{c_{1}} \ensuremath{\le} 0}）：左边 \texttt{= max 0 (\ensuremath{-}\ensuremath{c_{2}}) = 0}；右边 \texttt{= max 0 (\ensuremath{a_{2}}(\ensuremath{a_{1}}x \ensuremath{-} \ensuremath{c_{1}}) \ensuremath{-} \ensuremath{c_{2}}) \ensuremath{\le} max 0 (\ensuremath{-}\ensuremath{c_{2}}) = 0}，又非负，故也是 0。
 \end{itemize}
 
-\textbf{注意：这里不需要 \texttt{a\ensuremath{_{1}} > 0}。} 一维 ReLU 在复合下塌缩成一个单层 ReLU——因为 ReLU 分段线性且\textbf{只有一个折点}，折点复合后仍然只有一个折点。
+\textbf{注意：这里不需要 \texttt{\ensuremath{a_{1}} > 0}。} 一维 ReLU 在复合下塌缩成一个单层 ReLU——因为 ReLU 分段线性且\textbf{只有一个折点}，折点复合后仍然只有一个折点。
 
 \subsection{复合律}
 
@@ -1499,9 +1520,9 @@ theorem gap_compose_law (h1a : 0 < a₁) (h2a : 0 < a₂) :
     compThreshold a₁ c₁ a₂ c₂ + 1 = (c₁ / a₁ + 1) + ((c₂ / a₂ + 1) - 1) / a₁
 \end{lstlisting}
 
-其中 \texttt{√gap(f) = c\ensuremath{_{1}}/a\ensuremath{_{1}} + 1}，\texttt{√gap(g) = c\ensuremath{_{2}}/a\ensuremath{_{2}} + 1}。
+其中 \texttt{\ensuremath{\sqrt{\mathrm{gap}}}(f) = \ensuremath{c_{1}}/\ensuremath{a_{1}} + 1}，\texttt{\ensuremath{\sqrt{\mathrm{gap}}}(g) = \ensuremath{c_{2}}/\ensuremath{a_{2}} + 1}。
 
-\textbf{\texttt{a\ensuremath{_{1}} = 1} 时最干净：}
+\textbf{\texttt{\ensuremath{a_{1}} = 1} 时最干净：}
 
 \begin{lstlisting}
 √gap(g∘f) = √gap(f) + √gap(g) − 1
@@ -1526,20 +1547,20 @@ theorem gap_not_additive :
 theorem relu_compose_idempotent (x : ℚ) : reluAffine2 1 0 1 0 x = reluAffine 1 0 x
 \end{lstlisting}
 
-\textbf{推论 6.13（加层不减 gap）.} \texttt{√gap(f) ≤ √gap(g∘f)}。
+\textbf{推论 6.13（加层不减 gap）.} \texttt{\ensuremath{\sqrt{\mathrm{gap}}}(f) \ensuremath{\le} \ensuremath{\sqrt{\mathrm{gap}}}(g\ensuremath{\circ}f)}。
 
 \begin{lstlisting}
 theorem gap_depth_monotone (hc1 : 0 ≤ c₁) (hc2 : 0 ≤ c₂) :
     c₁ / a₁ + 1 ≤ compThreshold a₁ c₁ a₂ c₂ + 1
 \end{lstlisting}
 
-\textbf{推论 6.14（L 层闭式）.} 递归复合律：单位权重下 \texttt{√gap\_L = 1 + Σ c\ensuremath{_{i}}}，即
+\textbf{推论 6.14（L 层闭式）.} 递归复合律：单位权重下 \texttt{\ensuremath{\sqrt{\mathrm{gap}}}\_L = 1 + \ensuremath{\Sigma} \ensuremath{c_{i}}}，即
 
 \begin{lstlisting}
 gap(L 层单位权重) = (1 + Σ cᵢ)²
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 反复使用定理 6.8（两层塌成一层），得 L 个 \texttt{reluAffine 1 c\ensuremath{_{i}}} 的复合等于单个 \texttt{reluAffine 1 (Σc\ensuremath{_{i}})}；再套用定理 6.5。
+\textbackslash\{\}emph\{证明.\} 反复使用定理 6.8（两层塌成一层），得 L 个 \texttt{reluAffine 1 \ensuremath{c_{i}}} 的复合等于单个 \texttt{reluAffine 1 (\ensuremath{\Sigma}\ensuremath{c_{i}})}；再套用定理 6.5。
 
 \begin{lstlisting}
 def reluIter : List ℚ → ℚ → ℚ
@@ -1565,17 +1586,17 @@ theorem reluIter_isGap (cs : List ℚ) (hne : cs ≠ [])
 
 \textbf{第二，gap 是可归因的。}
 
-复合律 \texttt{√gap(g∘f) = √gap(f) + (√gap(g) − 1)/a\ensuremath{_{1}}} 说明：每加一层，\texttt{√gap} 增加 \texttt{(√gap(新层) − 1)/a\ensuremath{_{1}}}。
+复合律 \texttt{\ensuremath{\sqrt{\mathrm{gap}}}(g\ensuremath{\circ}f) = \ensuremath{\sqrt{\mathrm{gap}}}(f) + (\ensuremath{\sqrt{\mathrm{gap}}}(g) \ensuremath{-} 1)/\ensuremath{a_{1}}} 说明：每加一层，\texttt{\ensuremath{\sqrt{\mathrm{gap}}}} 增加 \texttt{(\ensuremath{\sqrt{\mathrm{gap}}}(新层) \ensuremath{-} 1)/\ensuremath{a_{1}}}。
 
 \begin{itemize}
 \item 标准 ReLU 的 \texttt{1} 是\textbf{免费额度}——第一层不额外收费；
-\item 之后每层收 \texttt{√gap − 1}；
-\item \textbf{增益 \texttt{a\ensuremath{_{1}}} 越大，下一层的贡献越小}。
+\item 之后每层收 \texttt{\ensuremath{\sqrt{\mathrm{gap}}} \ensuremath{-} 1}；
+\item \textbf{增益 \texttt{\ensuremath{a_{1}}} 越大，下一层的贡献越小}。
 \end{itemize}
 
 \textbf{第三，gap 与 §4 的"深度 = 切口数"吻合，但更细。}
 
-§4 说深度是切口数。这里说：\textbf{不是每个切口同等收费，收费额是 \texttt{(√gap(切口) − 1) / 增益}。}
+§4 说深度是切口数。这里说：\textbf{不是每个切口同等收费，收费额是 \texttt{(\ensuremath{\sqrt{\mathrm{gap}}}(切口) \ensuremath{-} 1) / 增益}。}
 
 \subsection{诚实的边界}
 
@@ -1589,15 +1610,15 @@ theorem reluIter_isGap (cs : List ℚ) (hne : cs ≠ [])
 \item 单层/两层：一维 ReLU 的折点只有一个，所以能塌成一层（定理 6.8）。
 \end{itemize}
 
-\textbf{三维及以上的一般情形，本文不做断言}——但有一个例外已经算清（§7.6）：整个盒坍缩时，\texttt{gap = 4nB²}。而 §6.5 的结构定理提示了一般情形为什么难：\textbf{多维 ReLU 的坍缩集是半空间，复合后通常不再是单个半空间}——所以"塌成一层"在多维不成立，复合律也需要重写。
+\textbf{三维及以上的一般情形，本文不做断言}——但有一个例外已经算清（§7.6）：整个盒坍缩时，\texttt{gap = 4n\ensuremath{B^{2}}}。而 §6.5 的结构定理提示了一般情形为什么难：\textbf{多维 ReLU 的坍缩集是半空间，复合后通常不再是单个半空间}——所以"塌成一层"在多维不成立，复合律也需要重写。
 
-具体地说，设状态空间是 \texttt{ℚⁿ} 的盒 \texttt{B}。一层 \texttt{x ↦ ReLU(Wx − c)}（\texttt{W : ℚⁿ → ℚ}）的坍缩集是半空间与盒的交：
+具体地说，设状态空间是 \texttt{\ensuremath{\mathbb{Q}}ⁿ} 的盒 \texttt{B}。一层 \texttt{x \ensuremath{\mapsto} ReLU(Wx \ensuremath{-} c)}（\texttt{W : \ensuremath{\mathbb{Q}}ⁿ \ensuremath{\to} \ensuremath{\mathbb{Q}}}）的坍缩集是半空间与盒的交：
 
 \begin{lstlisting}
 C₁ = {x ∈ B : Wx ≤ c}                   （盒 ∩ 半空间，一个凸多面体）
 \end{lstlisting}
 
-gap 是这个区域的直径平方：\texttt{sup \{ ‖x − y‖² : x, y ∈ C\ensuremath{_{1}} \}}。一层时这还是一个数（一个凸集的直径），但它由\textbf{整个多面体}决定，不只由一个阈值决定——\texttt{c/a} 只是在 1 维时恰好是直径的一半。
+gap 是这个区域的直径平方：\texttt{sup \{ \ensuremath{\|}x \ensuremath{-} y\ensuremath{\|}² : x, y \ensuremath{\in} \ensuremath{C_{1}} \}}。一层时这还是一个数（一个凸集的直径），但它由\textbf{整个多面体}决定，不只由一个阈值决定——\texttt{c/a} 只是在 1 维时恰好是直径的一半。
 
 复合后情况变了。两层的坍缩集是
 
@@ -1605,7 +1626,7 @@ gap 是这个区域的直径平方：\texttt{sup \{ ‖x − y‖² : x, y ∈ C
 C₂ = C₁ ∩ f⁻¹(C₂')
 \end{lstlisting}
 
-其中 \texttt{f⁻¹(C\ensuremath{_{2}}')} 是"折过的半空间"——被 ReLU 的断点切成若干块，每块是一个不同半空间的拉回。所以 \texttt{C\ensuremath{_{2}}} 一般\textbf{不再是单个凸集}，而是若干凸块的并。它的直径要逐块算，再取最大；而"哪几块存在"依赖于线性映射的核与各断点超平面的相对位置。
+其中 \texttt{\ensuremath{f^{-1}}(\ensuremath{C_{2}}')} 是"折过的半空间"——被 ReLU 的断点切成若干块，每块是一个不同半空间的拉回。所以 \texttt{\ensuremath{C_{2}}} 一般\textbf{不再是单个凸集}，而是若干凸块的并。它的直径要逐块算，再取最大；而"哪几块存在"依赖于线性映射的核与各断点超平面的相对位置。
 
 \textbf{这就是多维的困难：坍缩区域从"一个区间"变成了"若干个凸多面体"，gap 从标量变成了"块结构上的最大值"。}
 
@@ -1621,7 +1642,7 @@ C₂ = C₁ ∩ f⁻¹(C₂')
 
 \subsection{计数界}
 
-\textbf{定义 7.1（g-分离样本）.} 有限集 \texttt{S ⊂ ℚ} 是 \texttt{g}-分离的，如果两两距离平方严格大于 \texttt{g}。
+\textbf{定义 7.1（g-分离样本）.} 有限集 \texttt{S ⊂ \ensuremath{\mathbb{Q}}} 是 \texttt{g}-分离的，如果两两距离平方严格大于 \texttt{g}。
 
 \begin{lstlisting}
 def gSep (g : ℚ) (S : Finset ℚ) : Prop :=
@@ -1636,13 +1657,13 @@ theorem gSep_injOn {B g : ℚ} {f : ℚ → ℚ} (hg : IsGap B f g)
     ∀ x ∈ S, ∀ y ∈ S, f x = f y → x = y
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 假设 \texttt{f x = f y} 而 \texttt{x ≠ y}。由 \texttt{IsGap}，\texttt{(x−y)² ≤ g}；由分离，\texttt{g < (x−y)²}。矛盾。\ensuremath{\ensuremath{\blacksquare}}
+\textbackslash\{\}emph\{证明.\} 假设 \texttt{f x = f y} 而 \texttt{x \ensuremath{\ne} y}。由 \texttt{IsGap}，\texttt{(x\ensuremath{-}y)² \ensuremath{\le} g}；由分离，\texttt{g < (x\ensuremath{-}y)²}。矛盾。\ensuremath{\ensuremath{\blacksquare}}
 
-\textbf{这条定理说的是一件很硬的事：间距超过 \texttt{√g} 的样本，一个都省不掉。} 网络的"记忆"不是可选的——它对每个 \texttt{g}-分离的输入都必须给出不同的输出。
+\textbf{这条定理说的是一件很硬的事：间距超过 \texttt{\ensuremath{\sqrt{\mathrm{g}}}} 的样本，一个都省不掉。} 网络的"记忆"不是可选的——它对每个 \texttt{g}-分离的输入都必须给出不同的输出。
 
-把网格装进盒：取间距 \texttt{h} 的等差网格 \texttt{\{(k − N)h : 0 ≤ k ≤ 2N\}}。
+把网格装进盒：取间距 \texttt{h} 的等差网格 \texttt{\{(k \ensuremath{-} N)h : 0 \ensuremath{\le} k \ensuremath{\le} 2N\}}。
 
-\textbf{定理 7.3（网格上单射）.} 若 \texttt{h² > g}，且整个网格在盒 \texttt{[−B,B]} 内，则 \texttt{f} 在网格点上单射。
+\textbf{定理 7.3（网格上单射）.} 若 \texttt{\ensuremath{h^{2}} > g}，且整个网格在盒 \texttt{[\ensuremath{-}B,B]} 内，则 \texttt{f} 在网格点上单射。
 
 \begin{lstlisting}
 theorem gap_injOn_grid {B g h : ℚ} {f : ℚ → ℚ} (hg : IsGap B f g)
@@ -1652,9 +1673,9 @@ theorem gap_injOn_grid {B g h : ℚ} {f : ℚ → ℚ} (hg : IsGap B f g)
       f (gridPt N h k₁) = f (gridPt N h k₂) → k₁ = k₂
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 网格点间距是 \texttt{|k\ensuremath{_{1}}−k\ensuremath{_{2}}|·h ≥ h}，平方 \texttt{≥ h² > g}，与定理 7.2 矛盾。\ensuremath{\ensuremath{\blacksquare}}
+\textbackslash\{\}emph\{证明.\} 网格点间距是 \texttt{|\ensuremath{k_{1}}\ensuremath{-}\ensuremath{k_{2}}|\ensuremath{\cdot}h \ensuremath{\ge} h}，平方 \texttt{\ensuremath{\ge} \ensuremath{h^{2}} > g}，与定理 7.2 矛盾。\ensuremath{\ensuremath{\blacksquare}}
 
-\textbf{推论 7.4（容量上界）.} 若网格能装进盒（\texttt{N·h ≤ B}）且能被分辨（\texttt{h² > g}），则
+\textbf{推论 7.4（容量上界）.} 若网格能装进盒（\texttt{N\ensuremath{\cdot}h \ensuremath{\le} B}）且能被分辨（\texttt{\ensuremath{h^{2}} > g}），则
 
 \begin{lstlisting}
 N² · g < B²
@@ -1666,7 +1687,7 @@ theorem gap_capacity_bound {B g h : ℚ} (hB : 0 < B) (hh : 0 < h) (hsep : g < h
     (N : ℚ) ^ 2 * g < B ^ 2
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} \texttt{N²g < N²h² = (Nh)² ≤ B²}。\ensuremath{\ensuremath{\blacksquare}}
+\textbackslash\{\}emph\{证明.\} \texttt{\ensuremath{N^{2}}g < \ensuremath{N^{2}}\ensuremath{h^{2}} = (Nh)² \ensuremath{\le} \ensuremath{B^{2}}}。\ensuremath{\ensuremath{\blacksquare}}
 
 \textbf{这是全文唯一一个把 gap 和"能装下多少东西"直接连起来的式子。} 换写成计数形式：
 
@@ -1679,7 +1700,7 @@ theorem gap_capacity_bound {B g h : ℚ} (hB : 0 < B) (hh : 0 < h) (hsep : g < h
 直觉上"gap 大 = 泛化差"。上面的界说的是反的。
 
 \begin{itemize}
-\item \texttt{gap} 大 \ensuremath{\Longrightarrow} 每个纤维（同输出的输入类）宽 \ensuremath{\Longrightarrow} 需要的样本\textbf{少}（\texttt{N < B/√g}）\ensuremath{\Longrightarrow} \textbf{容量小} \ensuremath{\Longrightarrow} 泛化\textbf{容易}；
+\item \texttt{gap} 大 \ensuremath{\Longrightarrow} 每个纤维（同输出的输入类）宽 \ensuremath{\Longrightarrow} 需要的样本\textbf{少}（\texttt{N < B/\ensuremath{\sqrt{\mathrm{g}}}}）\ensuremath{\Longrightarrow} \textbf{容量小} \ensuremath{\Longrightarrow} 泛化\textbf{容易}；
 \item \texttt{gap} 小 \ensuremath{\Longrightarrow} 纤维窄 \ensuremath{\Longrightarrow} 要区分必须密集采样 \ensuremath{\Longrightarrow} \textbf{容量大} \ensuremath{\Longrightarrow} 泛化\textbf{难}。
 \end{itemize}
 
@@ -1702,7 +1723,7 @@ theorem relu_gap_resolution (a : ℚ) (ha : 0 < a) (h : ℚ) (hh : 0 < h) (hsep 
       reluAffine a 0 (gridPt N h k₁) = reluAffine a 0 (gridPt N h k₂) → k₁ = k₂
 \end{lstlisting}
 
-L 层网络（推论 6.14，gap \texttt{= (Σc\ensuremath{_{i}}+1)²}）的分辨率被\textbf{同一个数}卡住：
+L 层网络（推论 6.14，gap \texttt{= (\ensuremath{\Sigma}\ensuremath{c_{i}}+1)²}）的分辨率被\textbf{同一个数}卡住：
 
 \begin{lstlisting}
 theorem reluIter_gap_resolution (cs : List ℚ) (hne : cs ≠ [])
@@ -1717,9 +1738,9 @@ theorem reluIter_gap_resolution (cs : List ℚ) (hne : cs ≠ [])
 
 \subsection{精确容量（上界即达到）}
 
-\texttt{N²g < B²} 是必要条件，但不紧：标准 ReLU（\texttt{g = 1}、\texttt{B = 1}）代入得 \texttt{N < 1}，可它明明能分辨 2 个点。差在哪里？差在我们用的是"网格跨度 \texttt{Nh ≤ B}"，而盒的跨度其实是 \texttt{2B}。
+\texttt{\ensuremath{N^{2}}g < \ensuremath{B^{2}}} 是必要条件，但不紧：标准 ReLU（\texttt{g = 1}、\texttt{B = 1}）代入得 \texttt{N < 1}，可它明明能分辨 2 个点。差在哪里？差在我们用的是"网格跨度 \texttt{Nh \ensuremath{\le} B}"，而盒的跨度其实是 \texttt{2B}。
 
-取等距网格，步长 \texttt{h = 2B/(N−1)}，\texttt{N} 个点从 \texttt{−B} 排到 \texttt{B}：
+取等距网格，步长 \texttt{h = 2B/(N\ensuremath{-}1)}，\texttt{N} 个点从 \texttt{\ensuremath{-}B} 排到 \texttt{B}：
 
 \begin{lstlisting}
 def unifPt (B : ℚ) (N : ℕ) (k : ℕ) : ℚ :=
@@ -1729,7 +1750,7 @@ def unifGrid (B : ℚ) (N : ℕ) : Finset ℚ :=
   (Finset.range N).image (fun k => unifPt B N k)
 \end{lstlisting}
 
-\textbf{注意分母。} 这个定义在 \texttt{N = 1} 时除以零。在 Lean 中，\texttt{ℚ} 的除法约定 \texttt{x/0 = 0}——这是一个\textbf{工程约定}（为了让除法处处有定义），不是数学事实；标准数学里 \texttt{x/0} 是未定义的。所以 \texttt{unifPt} 在 Lean 里仍有定义，但网格退化成一个点，没有意义。下面两条定理都带前提 \texttt{2 ≤ N}——这不是技术上的凑数，而是\textbf{容量问题本身只在 \texttt{N ≥ 2} 时才有内容}：一个点谈不上"分辨"。
+\textbf{注意分母。} 这个定义在 \texttt{N = 1} 时除以零。在 Lean 中，\texttt{\ensuremath{\mathbb{Q}}} 的除法约定 \texttt{x/0 = 0}——这是一个\textbf{工程约定}（为了让除法处处有定义），不是数学事实；标准数学里 \texttt{x/0} 是未定义的。所以 \texttt{unifPt} 在 Lean 里仍有定义，但网格退化成一个点，没有意义。下面两条定理都带前提 \texttt{2 \ensuremath{\le} N}——这不是技术上的凑数，而是\textbf{容量问题本身只在 \texttt{N \ensuremath{\ge} 2} 时才有内容}：一个点谈不上"分辨"。
 
 \textbf{定理 7.5（精确容量）.} 这个网格是 \texttt{g}-分离的，当且仅当
 
@@ -1742,7 +1763,7 @@ theorem unifGrid_gSep_iff {B g : ℚ} (hB : 0 < B) (N : ℕ) (hN : 2 ≤ N) :
     gSep g (unifGrid B N) ↔ ((N - 1 : ℕ) : ℚ) ^ 2 * g < 4 * B ^ 2
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 网格点都在盒内，相邻两点距离恰为 \texttt{h}，所以分离条件就是 \texttt{h² > g}，而 \texttt{h² = 4B²/(N−1)²}。\ensuremath{\ensuremath{\blacksquare}}
+\textbackslash\{\}emph\{证明.\} 网格点都在盒内，相邻两点距离恰为 \texttt{h}，所以分离条件就是 \texttt{\ensuremath{h^{2}} > g}，而 \texttt{\ensuremath{h^{2}} = 4\ensuremath{B^{2}}/(N\ensuremath{-}1)²}。\ensuremath{\ensuremath{\blacksquare}}
 
 于是容量的精确值是
 
@@ -1767,7 +1788,7 @@ theorem gap_capacity_attained {B g : ℚ} (hB : 0 < B) (N : ℕ) (hN : 2 ≤ N)
 
 \begin{itemize}
 \item \textbf{Lipschitz 常数 \texttt{a}}：输入变化多少，输出变化多少；
-\item \textbf{\texttt{√gap = c/a + 1}}：纤维的宽度。
+\item \textbf{\texttt{\ensuremath{\sqrt{\mathrm{gap}}} = c/a + 1}}：纤维的宽度。
 \end{itemize}
 
 \begin{lstlisting}
@@ -1801,7 +1822,7 @@ theorem gap_decreasing_in_slope {a₁ a₂ c : ℚ} (ha₁ : 0 < a₁) (h12 : a�
 
 精确 gap 要求"输出完全相同"。真实网络不会给出逐位相同的输出，所以需要放松。
 
-\textbf{定义 7.2（\ensuremath{\eta}-相干）.} 输出差不超过 \texttt{η} 的输入，距离平方不超过 \texttt{g}：
+\textbf{定义 7.2（\ensuremath{\eta}-相干）.} 输出差不超过 \texttt{\ensuremath{\eta}} 的输入，距离平方不超过 \texttt{g}：
 
 \begin{lstlisting}
 def ApproxCoherent (B g η : ℚ) (f : ℚ → ℚ) : Prop :=
@@ -1813,7 +1834,7 @@ def ApproxCoherent (B g η : ℚ) (f : ℚ → ℚ) : Prop :=
 \textbf{定理 7.7（退化与单调）.}
 
 \begin{itemize}
-\item \texttt{η = 0} 时，\ensuremath{\eta}-相干就是精确相干：
+\item \texttt{\ensuremath{\eta} = 0} 时，\ensuremath{\eta}-相干就是精确相干：
 \end{itemize}
 
 \begin{lstlisting}
@@ -1830,9 +1851,9 @@ theorem approxGap_ge_gap {B η g g₀ : ℚ} {f : ℚ → ℚ} (hη : 0 ≤ η)
     (hg : IsGap B f g₀) (hag : IsApproxGap B η f g) : g₀ ≤ g
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} \texttt{ApproxCoherent} 取 \texttt{η = 0} 的特例就是 \texttt{CoherentOnBox}，由 \texttt{IsGap} 的最小性即得。\ensuremath{\ensuremath{\blacksquare}}
+\textbackslash\{\}emph\{证明.\} \texttt{ApproxCoherent} 取 \texttt{\ensuremath{\eta} = 0} 的特例就是 \texttt{CoherentOnBox}，由 \texttt{IsGap} 的最小性即得。\ensuremath{\ensuremath{\blacksquare}}
 
-\textbf{定理 7.8（ReLU 的 \ensuremath{\eta}-gap 闭式）.} 条件 \texttt{c + η ≤ a} 下，
+\textbf{定理 7.8（ReLU 的 \ensuremath{\eta}-gap 闭式）.} 条件 \texttt{c + \ensuremath{\eta} \ensuremath{\le} a} 下，
 
 \begin{lstlisting}
 η-gap = ((c + η)/a + 1)²
@@ -1844,9 +1865,9 @@ theorem reluAffine_isApproxGap (a c η : ℚ) (ha : 0 < a) (hc0 : 0 ≤ c) (hη 
     IsApproxGap 1 η (reluAffine a c) (((c + η) / a + 1) ^ 2)
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 上界：假设 \texttt{x − y > (c+η)/a + 1}。若 \texttt{f x = 0} 则 \texttt{x ≤ c/a}，距离不够；若 \texttt{f x > 0} 且 \texttt{f y = 0}，则 \texttt{f x ≤ η} 给 \texttt{x ≤ (c+η)/a}，也不够；若两者都正，则 \texttt{x − y = (f x − f y)/a ≤ η/a ≤ (c+η)/a + 1}。三种情形都矛盾。达到：取 \texttt{x = (c+η)/a}、\texttt{y = −1}，\texttt{f x = η}、\texttt{f y = 0}。\ensuremath{\ensuremath{\blacksquare}}
+\textbackslash\{\}emph\{证明.\} 上界：假设 \texttt{x \ensuremath{-} y > (c+\ensuremath{\eta})/a + 1}。若 \texttt{f x = 0} 则 \texttt{x \ensuremath{\le} c/a}，距离不够；若 \texttt{f x > 0} 且 \texttt{f y = 0}，则 \texttt{f x \ensuremath{\le} \ensuremath{\eta}} 给 \texttt{x \ensuremath{\le} (c+\ensuremath{\eta})/a}，也不够；若两者都正，则 \texttt{x \ensuremath{-} y = (f x \ensuremath{-} f y)/a \ensuremath{\le} \ensuremath{\eta}/a \ensuremath{\le} (c+\ensuremath{\eta})/a + 1}。三种情形都矛盾。达到：取 \texttt{x = (c+\ensuremath{\eta})/a}、\texttt{y = \ensuremath{-}1}，\texttt{f x = \ensuremath{\eta}}、\texttt{f y = 0}。\ensuremath{\ensuremath{\blacksquare}}
 
-\textbf{定理 7.9（线性律）.} \texttt{√gap} 关于 \texttt{η} 的斜率恒为 \texttt{1/a}：
+\textbf{定理 7.9（线性律）.} \texttt{\ensuremath{\sqrt{\mathrm{gap}}}} 关于 \texttt{\ensuremath{\eta}} 的斜率恒为 \texttt{1/a}：
 
 \begin{lstlisting}
 theorem approxGap_slope (a c η : ℚ) (ha : a ≠ 0) :
@@ -1857,13 +1878,13 @@ theorem approxGap_slope (a c η : ℚ) (ha : a ≠ 0) :
 Δ√gap / Δη = 1 / a
 \end{lstlisting}
 
-\textbf{这是"近似可解释"的汇率}：允许 \texttt{η} 的输出误差，等价于把纤维加宽 \texttt{η/a}。权重 \texttt{a} 越大，用输出误差换输入分辨率越便宜——这和 §7.4 的守恒律是同一件事的两面。
+\textbf{这是"近似可解释"的汇率}：允许 \texttt{\ensuremath{\eta}} 的输出误差，等价于把纤维加宽 \texttt{\ensuremath{\eta}/a}。权重 \texttt{a} 越大，用输出误差换输入分辨率越便宜——这和 §7.4 的守恒律是同一件事的两面。
 
 \subsection{多维：维度的代价（第一个定量结果）}
 
 §6.9 说多维困难，因为坍缩集变成凸块之并。但有一类情形仍然算得清：\textbf{整个盒被压成一点}。
 
-\textbf{定义 7.3（多维 gap）.} 盒 \texttt{[−B,B]ⁿ}、平方距离 \texttt{sqDist x y = Σ\ensuremath{_{i}} (x\ensuremath{_{i}} − y\ensuremath{_{i}})²}：
+\textbf{定义 7.3（多维 gap）.} 盒 \texttt{[\ensuremath{-}B,B]ⁿ}、平方距离 \texttt{sqDist x y = \ensuremath{\\Sigma_{i}} (\ensuremath{x_{i}} \ensuremath{-} \ensuremath{y_{i}})²}：
 
 \begin{lstlisting}
 def sqDist {n : ℕ} (x y : Fin n → ℚ) : ℚ := ∑ i, (x i - y i) ^ 2
@@ -1875,7 +1896,7 @@ def IsGapND {n : ℕ} (B : ℚ) (f : (Fin n → ℚ) → ℚ) (g : ℚ) : Prop :
   CoherentOnBoxND B g f ∧ ∀ δ : ℚ, CoherentOnBoxND B δ f → g ≤ δ
 \end{lstlisting}
 
-\textbf{定理 7.10（盒的直径）.} 盒内任意两点的平方距离不超过 \texttt{4nB²}：
+\textbf{定理 7.10（盒的直径）.} 盒内任意两点的平方距离不超过 \texttt{4n\ensuremath{B^{2}}}：
 
 \begin{lstlisting}
 theorem sqDist_bound {n : ℕ} {B : ℚ} {x y : Fin n → ℚ}
@@ -1883,9 +1904,9 @@ theorem sqDist_bound {n : ℕ} {B : ℚ} {x y : Fin n → ℚ}
     sqDist x y ≤ 4 * n * B ^ 2
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 每维 \texttt{(x\ensuremath{_{i}} − y\ensuremath{_{i}})² ≤ (2B)²}，\texttt{n} 维求和。\ensuremath{\ensuremath{\blacksquare}}
+\textbackslash\{\}emph\{证明.\} 每维 \texttt{(\ensuremath{x_{i}} \ensuremath{-} \ensuremath{y_{i}})² \ensuremath{\le} (2B)²}，\texttt{n} 维求和。\ensuremath{\ensuremath{\blacksquare}}
 
-\textbf{定理 7.11（整盒坍缩时的多维 gap）.} 设 \texttt{w ≥ 0} 且 \texttt{B·Σw\ensuremath{_{i}} ≤ c}（即整个盒都在坍缩区），则
+\textbf{定理 7.11（整盒坍缩时的多维 gap）.} 设 \texttt{w \ensuremath{\ge} 0} 且 \texttt{B\ensuremath{\cdot}\ensuremath{\Sigma}\ensuremath{w_{i}} \ensuremath{\le} c}（即整个盒都在坍缩区），则
 
 \begin{lstlisting}
 theorem relu_multi_isGap_full {n : ℕ} (_hn : 0 < n) {B : ℚ} (hB : 0 < B)
@@ -1893,7 +1914,7 @@ theorem relu_multi_isGap_full {n : ℕ} (_hn : 0 < n) {B : ℚ} (hB : 0 < B)
     IsGapND B (fun x => max 0 (∑ i, w i * x i - c)) (4 * n * B ^ 2)
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 上界由定理 7.10；达到取 \texttt{x = (B,…,B)}、\texttt{y = (−B,…,−B)}，两点都在盒内、都被压成 \texttt{0}，而距离平方恰为 \texttt{n·(2B)² = 4nB²}。\ensuremath{\ensuremath{\blacksquare}}
+\textbackslash\{\}emph\{证明.\} 上界由定理 7.10；达到取 \texttt{x = (B,\ensuremath{\ldots},B)}、\texttt{y = (\ensuremath{-}B,\ensuremath{\ldots},\ensuremath{-}B)}，两点都在盒内、都被压成 \texttt{0}，而距离平方恰为 \texttt{n\ensuremath{\cdot}(2B)² = 4n\ensuremath{B^{2}}}。\ensuremath{\ensuremath{\blacksquare}}
 
 \textbf{这就是维度的第一个定量结果：}
 
@@ -1901,7 +1922,7 @@ theorem relu_multi_isGap_full {n : ℕ} (_hn : 0 < n) {B : ℚ} (hB : 0 < B)
 gap(整盒坍缩) = 4nB²
 \end{lstlisting}
 
-一维时 \texttt{n = 1} 退回 \texttt{4B²}，与 §6.4 的"ReLU 杀死整个盒 \ensuremath{\Longrightarrow} gap = 4"完全一致。
+一维时 \texttt{n = 1} 退回 \texttt{4\ensuremath{B^{2}}}，与 §6.4 的"ReLU 杀死整个盒 \ensuremath{\Longrightarrow} gap = 4"完全一致。
 
 \textbf{维度让 gap 线性增长。} 高维网络天生更难解释——这不是权重没调好，是盒的几何：直径平方按维数线性涨，而坍缩区的宽度不变。§6.9 里"多维困难"的直觉，在这里有了第一个具体的数。
 
@@ -1909,7 +1930,7 @@ gap(整盒坍缩) = 4nB²
 
 \begin{itemize}
 \item 它\textbf{不是}一个泛化误差界。它不给"样本外误差"，只给"可分辨点数"。真正的泛化界需要分布，而本文全程 \ensuremath{\mathbb{Q}}、无测度。
-\item 它只对\textbf{一维盒}成立。多维时"网格"要换成格（lattice），计数变成体积比，界的形式应该类似（\texttt{N·vol < vol(B)}），但本文未做。
+\item 它只对\textbf{一维盒}成立。多维时"网格"要换成格（lattice），计数变成体积比，界的形式应该类似（\texttt{N\ensuremath{\cdot}vol < vol(B)}），但本文未做。
 \item 它假设 \texttt{f} 是确定的、被观察的是精确值。噪声下的稳定性需要另立一条（\texttt{gap} 的 \ensuremath{\varepsilon}-版本）。
 \end{itemize}
 
@@ -1919,19 +1940,19 @@ gap(整盒坍缩) = 4nB²
 
 \subsection{引言：一个具体的外部方案}
 
-近期有工作把层论直接用于可解释性。Grant 与 Wang 的 \textbackslash\{\}emph\{Gluing Local Contexts into Global Meaning\}（NeurIPS 2026；arXiv:2610.17117）在改述图（paraphrase graph）上建 cellular sheaf，用 sheaf Laplacian 的核（\texttt{H⁰}）提取"内容子空间"，用其谱补（\texttt{H¹} 方向）定位因果影响。
+近期有工作把层论直接用于可解释性。Grant 与 Wang 的 \textbackslash\{\}emph\{Gluing Local Contexts into Global Meaning\}（NeurIPS 2026；arXiv:2610.17117）在改述图（paraphrase graph）上建 cellular sheaf，用 sheaf Laplacian 的核（\texttt{\ensuremath{H^{0}}}）提取"内容子空间"，用其谱补（\texttt{\ensuremath{H^{1}}} 方向）定位因果影响。
 
-他们报告了一个引人注意的量：\textbf{把层堆叠成网格后，有 \texttt{b\ensuremath{_{1}} = N(L−1)} 个代数 1-循环}；由此导出的 \textbf{harmonic mass} 在不同架构间差近三个数量级，且与 steering fragility 强相关（Spearman ρ = 0.90，exact one-sided permutation p = 0.014）。
+他们报告了一个引人注意的量：\textbf{把层堆叠成网格后，有 \texttt{\ensuremath{b_{1}} = N(L\ensuremath{-}1)} 个代数 1-循环}；由此导出的 \textbf{harmonic mass} 在不同架构间差近三个数量级，且与 steering fragility 强相关（Spearman ρ = 0.90，exact one-sided permutation p = 0.014）。
 
 \textbf{本节不重复他们的实验，也不声称验证它们。} 本节做一件更窄的事：
 
 \begin{quote}
-\textbf{在我们这套形式化里，那个 \texttt{b\ensuremath{_{1}}} 是什么？}
+\textbf{在我们这套形式化里，那个 \texttt{\ensuremath{b_{1}}} 是什么？}
 \end{quote}
 
 \subsection{他们的方格问什么}
 
-摘要里只有 \texttt{b\ensuremath{_{1}} = N(L−1)}。\textbf{正文里才有那句定语}：
+摘要里只有 \texttt{\ensuremath{b_{1}} = N(L\ensuremath{-}1)}。\textbf{正文里才有那句定语}：
 
 \begin{quote}
 "A single-layer matching graph has no cycles, so algebraic \ensuremath{H^{1}} = 0... Stacking the same activations across layers gives a grid with \textbf{\ensuremath{b_{1}} = N(L\ensuremath{-}1) squares}, and each square asks whether the layer-l-to-layer-l+1 transformation \textbf{commutes with paraphrase equivalence}."
@@ -1941,7 +1962,7 @@ gap(整盒坍缩) = 4nB²
 
 \begin{enumerate}
 \item \textbf{\texttt{N} 是改述对（边）的数量}，不是节点——他们的改述图是\textbf{树}（"no cycles"）。
-\item \textbf{\texttt{b\ensuremath{_{1}} = N(L−1)} 是"改述对 \ensuremath{\times} 层转移"的方格数}。
+\item \textbf{\texttt{\ensuremath{b_{1}} = N(L\ensuremath{-}1)} 是"改述对 \ensuremath{\times} 层转移"的方格数}。
 \item \textbf{每个方格问的是：层变换 \texttt{T\_l} 是否与改述等价交换。}
 \end{enumerate}
 
@@ -1949,7 +1970,7 @@ gap(整盒坍缩) = 4nB²
 
 \subsection{我们的观察层塔不是那个网格}
 
-在本文的框架里，一个自然的层论结构是\textbf{观察层塔}：每层的对象是同一状态在不同分辨率下的凝结像，2-胞腔由"三层 \texttt{i ≤ j ≤ k} 加两条路径"构成。
+在本文的框架里，一个自然的层论结构是\textbf{观察层塔}：每层的对象是同一状态在不同分辨率下的凝结像，2-胞腔由"三层 \texttt{i \ensuremath{\le} j \ensuremath{\le} k} 加两条路径"构成。
 
 这个网格上，方格自动交换：
 
@@ -1984,7 +2005,7 @@ theorem euler_b1_full (n : ℤ) :
 \includegraphics[width=0.92\textwidth]{figs/fig4_grid.png}
 \end{center}
 
-\textbf{图 4.} 同一个 \texttt{b\ensuremath{_{1}}} 公式，建在两个不同的 site 上。左边每个方格都交换（消解是函子），所以洞恒为零——\textbf{在这里做诊断，什么也测不到}。右边是 Grant \& Wang 实际使用的 site（层变换 \ensuremath{\times} 改述对），红叉标记的是层变换放大 \texttt{δ}-等价的方格（\texttt{SquareFlat} 不成立），\texttt{b\ensuremath{_{1}}} 数的是它们。\textbf{结论不是"他们的 \ensuremath{b_{1}} 错了"，是"\ensuremath{b_{1}} 必须先说清楚建在哪"。}
+\textbf{图 4.} 同一个 \texttt{\ensuremath{b_{1}}} 公式，建在两个不同的 site 上。左边每个方格都交换（消解是函子），所以洞恒为零——\textbf{在这里做诊断，什么也测不到}。右边是 Grant \& Wang 实际使用的 site（层变换 \ensuremath{\times} 改述对），红叉标记的是层变换放大 \texttt{\ensuremath{\delta}}-等价的方格（\texttt{SquareFlat} 不成立），\texttt{\ensuremath{b_{1}}} 数的是它们。\textbf{结论不是"他们的 \ensuremath{b_{1}} 错了"，是"\ensuremath{b_{1}} 必须先说清楚建在哪"。}
 
 \subsection{而这不是巧合}
 
@@ -1998,7 +2019,7 @@ theorem observation_always_coherent (L : LayerLadder)
     Coherent L n (fun i => Quotient.mk (ResLayer.condense ⟨L.δ i⟩) (F x))
 \end{lstlisting}
 
-\textbf{所以观察层塔的 \texttt{b\ensuremath{_{1}} = 0} 不是网络的属性，是观测方式的属性。}
+\textbf{所以观察层塔的 \texttt{\ensuremath{b_{1}} = 0} 不是网络的属性，是观测方式的属性。}
 
 这就解释了为什么它不能承担诊断功能：\textbf{一个恒为零的量，区分不了任何东西。}
 
@@ -2015,7 +2036,7 @@ theorem observation_always_coherent (L : LayerLadder)
 顶点是什么 & 实际激活 \texttt{h\_\{n,l\}} & 凝结后的对象 \\
 方格问什么 & 层变换 \texttt{T\_l} 是否与改述交换 & 消解是否函子 \\
 自动吗 & \textbf{否}——这是诊断的全部内容 & \textbf{是}——\texttt{resolution\_comp} \\
-\texttt{b\ensuremath{_{1}}} & \texttt{N(L−1) > 0} & \textbf{0} \\
+\texttt{\ensuremath{b_{1}}} & \texttt{N(L\ensuremath{-}1) > 0} & \textbf{0} \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -2038,7 +2059,7 @@ theorem observation_always_coherent (L : LayerLadder)
 
 把"层变换与改述等价交换"翻译过来，就是本文框架里的：
 
-\textbf{定义 8.2（方格平坦）.} 层变换 \texttt{T} 在层 \texttt{δ} 上\textbf{平坦}，如果它不把 \ensuremath{\delta}-等价对推成非等价：
+\textbf{定义 8.2（方格平坦）.} 层变换 \texttt{T} 在层 \texttt{\ensuremath{\delta}} 上\textbf{平坦}，如果它不把 \ensuremath{\delta}-等价对推成非等价：
 
 \begin{lstlisting}
 SquareFlat δ T  :=  ∀ x y,  commonDist x y ≤ δ → commonDist (T x) (T y) ≤ δ
@@ -2054,7 +2075,7 @@ def SquareFlat {n : ℕ} (δ : ℚ) (T : StateQuant n → StateQuant n) : Prop :
 \begin{itemize}
 \item 恒等层平坦（\texttt{squareFlat\_id}）；
 \item 平坦在复合下保持（\texttt{squareFlat\_comp}）；
-\item \texttt{|c| ≤ 1} 的缩放平坦（\texttt{squareFlat\_scale\_of\_le}）；
+\item \texttt{|c| \ensuremath{\le} 1} 的缩放平坦（\texttt{squareFlat\_scale\_of\_le}）；
 \item \textbf{ReLU 平坦}——它是 1-Lipschitz，永不放大（\texttt{squareFlat\_relu}）。
 \end{itemize}
 
@@ -2072,8 +2093,8 @@ theorem squareFlat_scale_one (c : ℚ) :
 \textbackslash\{\}emph\{证明.\}
 
 \begin{itemize}
-\item （\ensuremath{\Longrightarrow}）取 \texttt{x = 0}、\texttt{y = 1}：\texttt{commonDist x y = 1 ≤ 1}，故 \texttt{commonDist (scale c x) (scale c y) = c² ≤ 1}。
-\item （\ensuremath{\Longleftarrow}）\texttt{commonDist (scale c x) (scale c y) = c² · commonDist x y ≤ commonDist x y ≤ δ}。
+\item （\ensuremath{\Longrightarrow}）取 \texttt{x = 0}、\texttt{y = 1}：\texttt{commonDist x y = 1 \ensuremath{\le} 1}，故 \texttt{commonDist (scale c x) (scale c y) = \ensuremath{c^{2}} \ensuremath{\le} 1}。
+\item （\ensuremath{\Longleftarrow}）\texttt{commonDist (scale c x) (scale c y) = \ensuremath{c^{2}} \ensuremath{\cdot} commonDist x y \ensuremath{\le} commonDist x y \ensuremath{\le} \ensuremath{\delta}}。
 \end{itemize}
 
 \subsection{于是 \ensuremath{b_{1}} 有了一个精确刻画}
@@ -2099,21 +2120,21 @@ theorem computation_grid_b1 :
  & 他们 & 本文 \\
 \midrule
 问法 & 层变换是否与改述交换 & 层变换是否放大 \ensuremath{\delta}-等价 \\
-度量 & harmonic mass（数值） & \texttt{c² ≤ 1}（不等式） \\
-结论 & \texttt{b\ensuremath{_{1}} = N(L−1)} & \texttt{b\ensuremath{_{1}} = 扩张层个数} \\
+度量 & harmonic mass（数值） & \texttt{\ensuremath{c^{2}} \ensuremath{\le} 1}（不等式） \\
+结论 & \texttt{\ensuremath{b_{1}} = N(L\ensuremath{-}1)} & \texttt{\ensuremath{b_{1}} = 扩张层个数} \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\textbf{而 transformer 的权重矩阵谱范数一般大于 1}，所以他们的 \texttt{b\ensuremath{_{1}}} 有内容；本文的 \texttt{id} / \texttt{ReLU} 层没有。
+\textbf{而 transformer 的权重矩阵谱范数一般大于 1}，所以他们的 \texttt{\ensuremath{b_{1}}} 有内容；本文的 \texttt{id} / \texttt{ReLU} 层没有。
 
 \subsubsection{\texttt{SquareFlat} 与 \texttt{gap}：方向相反的两个判据}
 
 这里要防止一个误解：\texttt{SquareFlat}（§8.6）和 \texttt{gap}（§6）看起来都在讲"层对距离做了什么"，但\textbf{它们测的是相反的两个方向}。
 
 \begin{itemize}
-\item \textbf{\texttt{SquareFlat} 是"不放大"}：\texttt{D(x,y) ≤ δ ⟹ D(Tx,Ty) ≤ δ}。它给的是\textbf{上界}——输出不会比输入更分散。
-\item \textbf{\texttt{gap} 是"不折叠太远"}：\texttt{f x = f y ⟹ D(x,y) ≤ g}。它给的是\textbf{下界}——被压成同一个值的输入不能太远。
+\item \textbf{\texttt{SquareFlat} 是"不放大"}：\texttt{D(x,y) \ensuremath{\le} \ensuremath{\delta} \ensuremath{\Longrightarrow} D(Tx,Ty) \ensuremath{\le} \ensuremath{\delta}}。它给的是\textbf{上界}——输出不会比输入更分散。
+\item \textbf{\texttt{gap} 是"不折叠太远"}：\texttt{f x = f y \ensuremath{\Longrightarrow} D(x,y) \ensuremath{\le} g}。它给的是\textbf{下界}——被压成同一个值的输入不能太远。
 \end{itemize}
 
 两者互不推出。四个反例都在一维、\texttt{B = 1} 上：
@@ -2123,10 +2144,10 @@ theorem computation_grid_b1 :
 \toprule
 映射 & \texttt{SquareFlat}？ & \texttt{gap} & 说明 \\
 \midrule
-\texttt{x ↦ x}（恒等） & 是 & 0 & 既不放大也不折叠 \\
-\texttt{x ↦ 0}（常数） & \textbf{是} & \textbf{4} & 完全不放大（所有距离变 0），但整个盒被折叠成一点 \\
-\texttt{x ↦ 2x} & \textbf{否}（放大了 2 倍） & \textbf{0} & 不折叠任何东西，但放大 \\
-\texttt{x ↦ ReLU(x)} & 是 & 1 & 平的那一半折叠，另一半不变 \\
+\texttt{x \ensuremath{\mapsto} x}（恒等） & 是 & 0 & 既不放大也不折叠 \\
+\texttt{x \ensuremath{\mapsto} 0}（常数） & \textbf{是} & \textbf{4} & 完全不放大（所有距离变 0），但整个盒被折叠成一点 \\
+\texttt{x \ensuremath{\mapsto} 2x} & \textbf{否}（放大了 2 倍） & \textbf{0} & 不折叠任何东西，但放大 \\
+\texttt{x \ensuremath{\mapsto} ReLU(x)} & 是 & 1 & 平的那一半折叠，另一半不变 \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -2138,9 +2159,9 @@ theorem const_isGap (c : ℚ) : IsGap 1 (fun _ : ℚ => c) 4
 theorem scale_two_isGap : IsGap 1 (fun x : ℚ => 2 * x) 0
 \end{lstlisting}
 
-\textbf{这两个定理放在一起，就是"方向相反"的证明}：常数映射的 \texttt{SquareFlat} 平凡成立（所有距离变 0），而它的 \texttt{gap} 达到上界 4；\texttt{x ↦ 2x} 恰恰相反，\texttt{SquareFlat} 失败（距离全部放大 2 倍），而 \texttt{gap = 0}。
+\textbf{这两个定理放在一起，就是"方向相反"的证明}：常数映射的 \texttt{SquareFlat} 平凡成立（所有距离变 0），而它的 \texttt{gap} 达到上界 4；\texttt{x \ensuremath{\mapsto} 2x} 恰恰相反，\texttt{SquareFlat} 失败（距离全部放大 2 倍），而 \texttt{gap = 0}。
 
-\textbf{第二行和第三行是关键}：一个映射可以\textbf{平坦但 gap 大}（常数映射），也可以\textbf{不平坦但 gap 小}（\texttt{x ↦ 2x}）。所以 §4.8 的分工表里，这两个判据应当并列，而不是互相推出。
+\textbf{第二行和第三行是关键}：一个映射可以\textbf{平坦但 gap 大}（常数映射），也可以\textbf{不平坦但 gap 小}（\texttt{x \ensuremath{\mapsto} 2x}）。所以 §4.8 的分工表里，这两个判据应当并列，而不是互相推出。
 
 \textbf{用一句话记住区别}：
 
@@ -2148,7 +2169,7 @@ theorem scale_two_isGap : IsGap 1 (fun x : ℚ => 2 * x) 0
 \texttt{SquareFlat} 问"层会不会把近的推远"；\texttt{gap} 问"层会不会把远的压近"。前者是诊断（§8），后者是代价（§6）。
 \end{quote}
 
-\textbf{这个区别也解释了为什么 §8 的 \texttt{b\ensuremath{_{1}}} 和 §6 的 \texttt{gap} 不能互相换算}：\texttt{b\ensuremath{_{1}}} 数的是"有几次没通过 \texttt{SquareFlat}"，\texttt{gap} 量的是"通过或不通过，一共折叠了多远"。一个是计数，一个是量。
+\textbf{这个区别也解释了为什么 §8 的 \texttt{\ensuremath{b_{1}}} 和 §6 的 \texttt{gap} 不能互相换算}：\texttt{\ensuremath{b_{1}}} 数的是"有几次没通过 \texttt{SquareFlat}"，\texttt{gap} 量的是"通过或不通过，一共折叠了多远"。一个是计数，一个是量。
 
 \subsection{本节贡献的边界}
 
@@ -2165,7 +2186,7 @@ theorem scale_two_isGap : IsGap 1 (fun x : ℚ => 2 * x) 0
 \begin{enumerate}
 \item \textbf{划界}：观察层塔恒相干（定理 4.8），所以诊断不能建在那里。
 \item \textbf{翻译}：在计算网格上，"方格交换"是"层变换不放大 \ensuremath{\delta}-等价"（定义 8.2）。
-\item \textbf{计算}：这个条件在缩放族上等价于 \texttt{c² ≤ 1}（定理 8.4），于是 \texttt{b\ensuremath{_{1}}} 计数扩张层。
+\item \textbf{计算}：这个条件在缩放族上等价于 \texttt{\ensuremath{c^{2}} \ensuremath{\le} 1}（定理 8.4），于是 \texttt{\ensuremath{b_{1}}} 计数扩张层。
 \end{enumerate}
 
 \textbf{这三件事都不依赖他们的实验，也不与他们的结论竞争。它们是同一个问题的另一种算法。}
@@ -2174,13 +2195,13 @@ theorem scale_two_isGap : IsGap 1 (fun x : ℚ => 2 * x) 0
 
 本节初稿曾经犯过一个错，记录在这里。
 
-初稿只读了摘要里的 \texttt{b\ensuremath{_{1}} = N(L−1)}，然后用一个凑得上的算术恒等式去对应：
+初稿只读了摘要里的 \texttt{\ensuremath{b_{1}} = N(L\ensuremath{-}1)}，然后用一个凑得上的算术恒等式去对应：
 
 \begin{lstlisting}
 (N−1)(L−1) + (L−1) = N(L−1)
 \end{lstlisting}
 
-这条式子\textbf{对任意 \texttt{N, L} 恒成立}——也就是说，它能对上\textbf{任何}写成 \texttt{N(L−1)} 的公式。
+这条式子\textbf{对任意 \texttt{N, L} 恒成立}——也就是说，它能对上\textbf{任何}写成 \texttt{N(L\ensuremath{-}1)} 的公式。
 
 \textbf{这本身就是它不能作为证据的信号：能对上一切的公式，等于什么也没对上。}
 
@@ -2228,15 +2249,15 @@ theorem scale_two_isGap : IsGap 1 (fun x : ℚ => 2 * x) 0
 
 \subsubsection{Sheaf 与规范理论}
 
-Grant \& Wang（NeurIPS 2026，arXiv:2610.17117）在改述图上建 cellular sheaf，用 Laplacian 拆分内容子空间与 \texttt{H¹} 方向。也有工作用 gauge 理论刻画叠加现象。
+Grant \& Wang（NeurIPS 2026，arXiv:2610.17117）在改述图上建 cellular sheaf，用 Laplacian 拆分内容子空间与 \texttt{\ensuremath{H^{1}}} 方向。也有工作用 gauge 理论刻画叠加现象。
 
 \textbf{它们的做法}：构造 site（改述图 / 层 \ensuremath{\times} 改述网格），在上面定义 sheaf，用上同调定位"不可粘合"的部分。
 
-\textbf{本文的关系}：§8 全节就是与它们的对话。核心结论是\textbf{\texttt{b\ensuremath{_{1}}} 是 site 的函数，不是网络的属性}：
+\textbf{本文的关系}：§8 全节就是与它们的对话。核心结论是\textbf{\texttt{\ensuremath{b_{1}}} 是 site 的函数，不是网络的属性}：
 
 \begin{itemize}
-\item 在\textbf{观察层塔}上，方格恒交换（\texttt{layer\_square\_commutes}），\texttt{b\ensuremath{_{1}} ≡ 0}；
-\item 在\textbf{计算网格}上（层变换 \ensuremath{\times} 改述对），方格交换 \ensuremath{\Longleftrightarrow} 层变换不放大 \texttt{δ}-等价（\texttt{SquareFlat}），于是 \texttt{b\ensuremath{_{1}}} 计数扩张层。
+\item 在\textbf{观察层塔}上，方格恒交换（\texttt{layer\_square\_commutes}），\texttt{\ensuremath{b_{1}} \ensuremath{\equiv} 0}；
+\item 在\textbf{计算网格}上（层变换 \ensuremath{\times} 改述对），方格交换 \ensuremath{\Longleftrightarrow} 层变换不放大 \texttt{\ensuremath{\delta}}-等价（\texttt{SquareFlat}），于是 \texttt{\ensuremath{b_{1}}} 计数扩张层。
 \end{itemize}
 
 所以本文不是"也做了一个 sheaf"，而是\textbf{指出了一个方法论陷阱}：同一个公式，建在不同 site 上，一个恒为零，一个携带信息。§8.9 记录了本文自己踩进这个陷阱又爬出来的过程。
@@ -2261,7 +2282,7 @@ Grant \& Wang（NeurIPS 2026，arXiv:2610.17117）在改述图上建 cellular sh
 
 \subsubsection{形式化验证}
 
-本文的全部结论在 Lean 4 + Mathlib 中机械检验：零 \texttt{sorry}、无 \texttt{Classical}、全程 \texttt{ℚ}。
+本文的全部结论在 Lean 4 + Mathlib 中机械检验：零 \texttt{sorry}、无 \texttt{Classical}、全程 \texttt{\ensuremath{\mathbb{Q}}}。
 
 据我们所知，AI 可解释性领域尚无同等规格的构造性形式化。这不是炫耀——\textbf{它约束了本文能说什么}：
 
@@ -2277,7 +2298,7 @@ Grant \& Wang（NeurIPS 2026，arXiv:2610.17117）在改述图上建 cellular sh
 V = {δ : ∀ s ∈ S, s ≤ δ}
 \end{lstlisting}
 
-\texttt{V} 是一个\textbf{上闭集}：\texttt{δ ∈ V} 且 \texttt{δ ≤ δ'} 则 \texttt{δ' ∈ V}（\texttt{coherentOnBox\_mono}）。而 \texttt{V} 有最小元，当且仅当 \texttt{S} 在 \ensuremath{\mathbb{Q}} 中有上确界且该上确界属于 \ensuremath{\mathbb{Q}}。\textbf{\ensuremath{\mathbb{Q}} 不完备，所以最后这一步可能失败}——此时"gap 是多少"这个问题没有答案，不是我们不知道，是那个数不在 \ensuremath{\mathbb{Q}} 里。
+\texttt{V} 是一个\textbf{上闭集}：\texttt{\ensuremath{\delta} \ensuremath{\in} V} 且 \texttt{\ensuremath{\delta} \ensuremath{\le} \ensuremath{\delta}'} 则 \texttt{\ensuremath{\delta}' \ensuremath{\in} V}（\texttt{coherentOnBox\_mono}）。而 \texttt{V} 有最小元，当且仅当 \texttt{S} 在 \ensuremath{\mathbb{Q}} 中有上确界且该上确界属于 \ensuremath{\mathbb{Q}}。\textbf{\ensuremath{\mathbb{Q}} 不完备，所以最后这一步可能失败}——此时"gap 是多少"这个问题没有答案，不是我们不知道，是那个数不在 \ensuremath{\mathbb{Q}} 里。
 
 所以写成关系是精确的：\texttt{IsGap B f g} 说的是"\texttt{g} 是 \texttt{V} 的最小元"，而不是预设这样的 \texttt{g} 存在。若它存在，则唯一（\texttt{isGap\_unique}）。
 
@@ -2302,7 +2323,7 @@ theorem isGap_unique {B g g' : ℚ} {f : ℚ → ℚ}
 \midrule
 没有分布、没有测度 & 不是泛化误差界；§7 只是容量计数 & §7 \\
 没有训练动力学 & 不解释网络\textbf{如何}变得相干/不相干 & — \\
-没有多维一般情形 & 只有整盒坍缩（\texttt{gap = 4nB²}）算清；非整盒坍缩见 §9.5 第 1 条 & §7.6 \\
+没有多维一般情形 & 只有整盒坍缩（\texttt{gap = 4n\ensuremath{B^{2}}}）算清；非整盒坍缩见 §9.5 第 1 条 & §7.6 \\
 没有实验 & 全部是定理，没有一条是测量 & 全文 \\
 没有算法 & \texttt{encode} 本身是构造性的，但不给"从网络权重判断是否相干、并找到源对象"的算法 & §5 \\
 网络模型是离散层塔 & 连续深度（Neural ODE）不在框架内 & §4.2 \\
@@ -2318,14 +2339,14 @@ theorem isGap_unique {B g g' : ℚ} {f : ℚ → ℚ}
 
 \textbf{预言一：gap 由 bias/weight 之比决定，与层内权重的整体尺度无关。}
 
-§6.3：\texttt{gap = (c/a + 1)²}。所以把\textbf{一层} ReLU 的权重和偏置同时乘以 \texttt{λ}，gap 不变。
+§6.3：\texttt{gap = (c/a + 1)²}。所以把\textbf{一层} ReLU 的权重和偏置同时乘以 \texttt{\ensuremath{\lambda}}，gap 不变。
 
 \begin{lstlisting}
 theorem gap_layer_scale_invariant (a c lam : ℚ) (_ha : a ≠ 0) (hlam : lam ≠ 0) :
     ((lam * c) / (lam * a) + 1) ^ 2 = (c / a + 1) ^ 2
 \end{lstlisting}
 
-\textbf{但这个不变性只在层内成立，不能推到整个网络。} 缩放第一层后，第二层的贡献会被 \texttt{λ} 除：
+\textbf{但这个不变性只在层内成立，不能推到整个网络。} 缩放第一层后，第二层的贡献会被 \texttt{\ensuremath{\lambda}} 除：
 
 \begin{lstlisting}
 def sqrtGapTwo (a₁ c₁ a₂ c₂ : ℚ) : ℚ := c₁ / a₁ + 1 + c₂ / (a₂ * a₁)
@@ -2352,27 +2373,27 @@ theorem sqrtGapTwo_scale_first_le {a₁ c₁ a₂ c₂ lam : ℚ} (ha₁ : 0 < a
     sqrtGapTwo (lam * a₁) (lam * c₁) a₂ c₂ ≤ sqrtGapTwo a₁ c₁ a₂ c₂
 \end{lstlisting}
 
-\textbf{注意它的性质：这不是"网络不好"，是"网络有一个可调的旋钮"。} 放大浅层权重同时做两件事——让网络更可解释（gap 变小），代价是深层贡献被稀释（第二层的项除以 \texttt{λ}）。两个效果来自同一个操作，\textbf{这就是为什么它是一个旋钮而不是一个缺陷}：你可以沿着它走，但每一步都在两个方向之间交换。
+\textbf{注意它的性质：这不是"网络不好"，是"网络有一个可调的旋钮"。} 放大浅层权重同时做两件事——让网络更可解释（gap 变小），代价是深层贡献被稀释（第二层的项除以 \texttt{\ensuremath{\lambda}}）。两个效果来自同一个操作，\textbf{这就是为什么它是一个旋钮而不是一个缺陷}：你可以沿着它走，但每一步都在两个方向之间交换。
 
-\textbf{\texttt{λ ≥ 1} 越大，整个网络越可解释。} 这是 §7.4"斜率越大越可解释"的跨层版本，也说明预言一应该在\textbf{层内}检验，不是在网络层。
+\textbf{\texttt{\ensuremath{\lambda} \ensuremath{\ge} 1} 越大，整个网络越可解释。} 这是 §7.4"斜率越大越可解释"的跨层版本，也说明预言一应该在\textbf{层内}检验，不是在网络层。
 
-\textbf{可测}：对单层做 \texttt{(a, c) → (λa, λc)} 重参数化，该层 gap 应不动；但对整个网络做同样操作（只缩放第一层），总 gap 应当\textbf{下降}。两个实验指向的结论不同——这正是这条预言的可证伪之处。
+\textbf{可测}：对单层做 \texttt{(a, c) \ensuremath{\to} (\ensuremath{\lambda}a, \ensuremath{\lambda}c)} 重参数化，该层 gap 应不动；但对整个网络做同样操作（只缩放第一层），总 gap 应当\textbf{下降}。两个实验指向的结论不同——这正是这条预言的可证伪之处。
 
 \textbf{预言二：gap 与探测敏感性不同向。}
 
-§7.4 的守恒律：\texttt{Lipschitz 常数 × √gap = a + c}。所以提升斜率会让网络更敏感（Lipschitz 大）但更可解释（gap 小）。\textbf{这两个性质不能同时优化。}
+§7.4 的守恒律：\texttt{Lipschitz 常数 \ensuremath{\times} \ensuremath{\sqrt{\mathrm{gap}}} = a + c}。所以提升斜率会让网络更敏感（Lipschitz 大）但更可解释（gap 小）。\textbf{这两个性质不能同时优化。}
 
 \textbf{可测}：对抗扰动的敏感度与 gap 应该负相关。
 
 \textbf{预言三：观察层塔上的 sheaf 诊断恒为零。}
 
-定理 8.1：\texttt{b\ensuremath{_{1}}(观察层塔) ≡ 0}。所以任何在观察层塔（而非计算网格）上做 sheaf 诊断的方法，其 \texttt{H¹} 必定为空。这不是"效果不好"，是\textbf{测不到东西}。
+定理 8.1：\texttt{\ensuremath{b_{1}}(观察层塔) \ensuremath{\equiv} 0}。所以任何在观察层塔（而非计算网格）上做 sheaf 诊断的方法，其 \texttt{\ensuremath{H^{1}}} 必定为空。这不是"效果不好"，是\textbf{测不到东西}。
 
-\textbf{可测}：复现 §8 的构造但把 site 换成观察层塔，\texttt{b\ensuremath{_{1}}} 应该恒为 0。
+\textbf{可测}：复现 §8 的构造但把 site 换成观察层塔，\texttt{\ensuremath{b_{1}}} 应该恒为 0。
 
 \textbf{预言四：gap 大的网络泛化好、可解释差。}
 
-§7：\texttt{N < 2B/√g + 1}。gap 大 \ensuremath{\Longrightarrow} 容量小 \ensuremath{\Longrightarrow} 泛化容易；同时 gap 大 \ensuremath{\Longrightarrow} 纤维宽 \ensuremath{\Longrightarrow} 不可解释。
+§7：\texttt{N < 2B/\ensuremath{\sqrt{\mathrm{g}}} + 1}。gap 大 \ensuremath{\Longrightarrow} 容量小 \ensuremath{\Longrightarrow} 泛化容易；同时 gap 大 \ensuremath{\Longrightarrow} 纤维宽 \ensuremath{\Longrightarrow} 不可解释。
 
 \textbf{可测}：在同架构、同数据的不同初始化之间，gap 与测试误差应该负相关，与人工解释成功率应该负相关。
 
@@ -2413,9 +2434,9 @@ theorem sqrtGapTwo_scale_first_le {a₁ c₁ a₂ c₂ lam : ℚ} (ha₁ : 0 < a
 
 \subsection{A.1 公理}
 
-\textbf{A0（自指）.} 存在一个映射 \texttt{observe : α → (α → Bool)}。
+\textbf{A0（自指）.} 存在一个映射 \texttt{observe : \ensuremath{\alpha} \ensuremath{\to} (\ensuremath{\alpha} \ensuremath{\to} Bool)}。
 
-这不需要假设"存在一个系统"——每个类型都有。所以 A0 在技术上其实是\textbf{定义}而不是公理：我们可以无条件地造出一个 \texttt{SelfRef α}。
+这不需要假设"存在一个系统"——每个类型都有。所以 A0 在技术上其实是\textbf{定义}而不是公理：我们可以无条件地造出一个 \texttt{SelfRef \ensuremath{\alpha}}。
 
 （§1.3 仍然称它为"公理"，是因为它规定了后续一切的读法：从这条映射出发洞是必然的，换一个出发点洞就不出现。这个称呼是方法论上的，不是逻辑上的。下面所有证明只用它的定义性内容。）
 
@@ -2436,18 +2457,18 @@ theorem selfref_axiom :
       Coherent L n (fun i => Quotient.mk (ResLayer.condense ⟨L.δ i⟩) (F x)))
 \end{lstlisting}
 
-\textbf{A1（有限）.} \texttt{α} 是有限的（\texttt{Fintype α}）且可判定（\texttt{DecidableEq α}）。
+\textbf{A1（有限）.} \texttt{\ensuremath{\alpha}} 是有限的（\texttt{Fintype \ensuremath{\alpha}}）且可判定（\texttt{DecidableEq \ensuremath{\alpha}}）。
 
 \subsection{A.2 A0 \ensuremath{\Longrightarrow} 洞}
 
-\textbf{定理 A.1（康托尔对角线）.} 对任意 \texttt{α} 和任意 \texttt{f : α → (α → Bool)}，存在一个判定 \texttt{d} 不在 \texttt{f} 的像里。
+\textbf{定理 A.1（康托尔对角线）.} 对任意 \texttt{\ensuremath{\alpha}} 和任意 \texttt{f : \ensuremath{\alpha} \ensuremath{\to} (\ensuremath{\alpha} \ensuremath{\to} Bool)}，存在一个判定 \texttt{d} 不在 \texttt{f} 的像里。
 
 \begin{lstlisting}
 theorem diagonal_hole {α : Type*} (f : α → resolveSpace α) :
     ∃ d : resolveSpace α, ∀ a : α, d ≠ f a
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} 取 \texttt{d := fun a => ¬(f a a)}。若 \texttt{d = f a\ensuremath{_{0}}}，则 \texttt{d a\ensuremath{_{0}} = f a\ensuremath{_{0}} a\ensuremath{_{0}}}，但 \texttt{d a\ensuremath{_{0}} = ¬(f a\ensuremath{_{0}} a\ensuremath{_{0}})}，矛盾。\ensuremath{\ensuremath{\blacksquare}}
+\textbackslash\{\}emph\{证明.\} 取 \texttt{d := fun a => \ensuremath{\neg}(f a a)}。若 \texttt{d = f \ensuremath{a_{0}}}，则 \texttt{d \ensuremath{a_{0}} = f \ensuremath{a_{0}} \ensuremath{a_{0}}}，但 \texttt{d \ensuremath{a_{0}} = \ensuremath{\neg}(f \ensuremath{a_{0}} \ensuremath{a_{0}})}，矛盾。\ensuremath{\ensuremath{\blacksquare}}
 
 \textbf{这条证明没有任何假设。} 不需要有限性，不需要可判定性，不需要选择公理。它是纯逻辑的。
 
@@ -2462,23 +2483,23 @@ theorem selfref_hole {α : Type*} (S : SelfRef α) :
 
 有了 A1，我们不仅能说"漏了一个"，还能说"漏了多少"。
 
-\textbf{定义 A.2（熵）.} \texttt{entropy f := 2\textasciicircum{}\{|α|\} − |image f|}，即分辨空间的总数减去被够到的分辨数。
+\textbf{定义 A.2（熵）.} \texttt{entropy f := 2\textasciicircum{}\{|\ensuremath{\alpha}|\} \ensuremath{-} |image f|}，即分辨空间的总数减去被够到的分辨数。
 
 \begin{lstlisting}
 def entropy {α : Type*} [Fintype α] [DecidableEq α] (f : α → resolveSpace α) : ℕ :=
   (Finset.univ : Finset (resolveSpace α)).card - (Finset.univ.image f).card
 \end{lstlisting}
 
-\textbf{定理 A.3.} \texttt{α} 非空且有限时，\texttt{entropy f > 0}。
+\textbf{定理 A.3.} \texttt{\ensuremath{\alpha}} 非空且有限时，\texttt{entropy f > 0}。
 
 \begin{lstlisting}
 theorem entropy_positive {α : Type*} [Fintype α] [DecidableEq α] [Nonempty α]
     (f : α → resolveSpace α) : 0 < entropy f
 \end{lstlisting}
 
-\textbackslash\{\}emph\{证明.\} \texttt{d} 不在像里（定理 A.1），所以 \texttt{|image f| < 2\textasciicircum{}\{|α|\}}。\ensuremath{\ensuremath{\blacksquare}}
+\textbackslash\{\}emph\{证明.\} \texttt{d} 不在像里（定理 A.1），所以 \texttt{|image f| < 2\textasciicircum{}\{|\ensuremath{\alpha}|\}}。\ensuremath{\ensuremath{\blacksquare}}
 
-\textbf{注意这里发生了什么。} A0 给的是一个\textbf{纯逻辑的洞}（存在性）；A1 把它变成一个\textbf{自然数}（\texttt{entropy f ≥ 1}）。有限性不是约束条件，是让洞\textbf{可数}的条件。
+\textbf{注意这里发生了什么。} A0 给的是一个\textbf{纯逻辑的洞}（存在性）；A1 把它变成一个\textbf{自然数}（\texttt{entropy f \ensuremath{\ge} 1}）。有限性不是约束条件，是让洞\textbf{可数}的条件。
 
 \subsection{A.4 层塔是它的一个实例}
 
@@ -2537,7 +2558,7 @@ theorem ladderReading_determined_by_dist (L : LayerLadder) {n : ℕ}
 
 \begin{itemize}
 \item 任何按层塔观测的映射都自动相干（§4.6 的 \texttt{observation\_always\_coherent}）；
-\item 任何在层塔上做的 sheaf 诊断都测不到东西（§8 的 \texttt{b\ensuremath{_{1}} ≡ 0}）。
+\item 任何在层塔上做的 sheaf 诊断都测不到东西（§8 的 \texttt{\ensuremath{b_{1}} \ensuremath{\equiv} 0}）。
 \end{itemize}
 
 \textbf{角色二：自指系统。} 上面 A.4 已经说明它有洞。
@@ -2562,7 +2583,7 @@ theorem ladderReading_determined_by_dist (L : LayerLadder) {n : ℕ}
 
 \section{B：Lean 定理索引}
 
-全部定理在 \texttt{Ego.lean} 中，零 \texttt{sorry}、无 \texttt{Classical}、全程 \texttt{ℚ}。下表按论文节次分组。
+全部定理在 \texttt{Ego.lean} 中，零 \texttt{sorry}、无 \texttt{Classical}、全程 \texttt{\ensuremath{\mathbb{Q}}}。下表按论文节次分组。
 
 \subsection{B.1 自指与基础（§2、附录 A）}
 
@@ -2700,7 +2721,7 @@ theorem ladderReading_determined_by_dist (L : LayerLadder) {n : ℕ}
 定义 8.2 & \texttt{SquareFlat} & 层变换不放大 \ensuremath{\delta} \\
 定理 8.4 & \texttt{computation\_grid\_b1} & 计算网格的 \ensuremath{b_{1}} 计数扩张层 \\
 §8.7.1 & \texttt{const\_isGap} & 常数映射：平坦但 gap = 4 \\
-§8.7.1 & \texttt{scale\_two\_isGap} & \texttt{x ↦ 2x}：放大但 gap = 0 \\
+§8.7.1 & \texttt{scale\_two\_isGap} & \texttt{x \ensuremath{\mapsto} 2x}：放大但 gap = 0 \\
 — & \texttt{two\_views\_of\_b1} & 两个视角 \\
 — & \texttt{b1\_grid\_degree\_identity} & 纯算术恒等式（不是解释） \\
 \bottomrule
