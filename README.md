@@ -81,7 +81,7 @@ Consequently the paper does not claim: generalization error bounds (needs measur
 
 ```bibtex
 @misc{shu2026encodability,
-  author = {Shu, Kraken},
+  author = {Shu, Wenxu},
   title  = {Explainability is Encodability: A Sheaf-Theoretic Foundation for Neural Network Interpretability},
   year   = {2026},
   note   = {Working draft. Formalized in Lean 4.}
@@ -95,4 +95,4 @@ Consequently the paper does not claim: generalization error bounds (needs measur
 
 ## Contact
 
-Kraken Shu · [@KrakenShu](https://github.com/KrakenShu) — open an issue for correspondence.
+Wenxu Shu · [@KrakenShu](https://github.com/KrakenShu) — open an issue for correspondence.
