@@ -1,0 +1,30 @@
+name: Build paper
+
+on:
+  push:
+    paths:
+      - 'paper/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  latex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile (XeLaTeX)
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: paper/main.tex
+          latexmk_use_xelatex: true
+          extra_packages: ctex
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-pdf
+          path: paper/main.pdf
+          if-no-files-found: error
