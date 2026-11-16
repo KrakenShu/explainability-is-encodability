@@ -260,6 +260,10 @@ Lawvere & 不动点 & 存在 \\
 
 \textbf{加上有限（A1）}，洞变成可计数的（推论 2.2）。层塔是它的一个具体实例（§2.1、附录 A）：\texttt{L.m} 层只能给出 \texttt{L.m} 个分辨者，分辨空间却有 \texttt{2\textasciicircum{}\{L.m\}} 种——\textbf{必漏}。附录 A 给出完整推导。
 
+\textbf{但 A0/A1 不参与 §4–§8 的任何证明。} 这一点由 Lean 的编译顺序直接保证：\texttt{SelfRef} 与 \texttt{entropy} 定义在 \texttt{Ego.lean} 第 12960 行之后，而论文的定理（\texttt{Coherent}、\texttt{encode}、\texttt{IsGap}、\texttt{b1} 系列）全部在它之前，Lean 不允许前向引用。所以\textbf{删掉附录 A，论文的定理一条都不会少。}
+
+它们回答的是另一个问题：\textbf{为什么这个模型值得选}——为什么层塔是有限、一维、严格递减的链，而不是别的结构。这是动机，不是前提。
+
 \subsection{与已有工作的关系}
 
 \textbf{拓扑数据分析。} 用持久同调分析神经网络是成熟方向（Naitzat et al., JMLR 2020；Neural Persistence, ICLR 2019）。本文与之一致：§2.5 的三界读数在结构上是谱的层析。区别在于本文不做经验测量，而是证明读数的结构性质。
@@ -2431,6 +2435,12 @@ theorem sqrtGapTwo_scale_first_le {a₁ c₁ a₂ c₂ lam : ℚ} (ha₁ : 0 < a
 \appendix
 
 \section{A：自指公理 A0 + A1 \ensuremath{\Longrightarrow} 洞}
+
+\textbf{本附录给出论文模型选择的理由。主文的定理不依赖本附录。}
+
+具体地说：\texttt{SelfRef}、\texttt{entropy} 定义在 \texttt{Ego.lean} 第 12960 行之后，而 §4–§8 的全部定理定义在它之前；Lean 不允许前向引用，所以它们之间不可能有依赖。§4–§8 用到的只有 \texttt{commonDist}、\texttt{ResLayer}、\texttt{reluAffine}，与自指无关。
+
+本附录回答的是：\textbf{为什么层塔是有限、一维、严格递减的链}——这是模型选择的理由，不是定理的前提。
 
 \subsection{A.1 公理}
 
